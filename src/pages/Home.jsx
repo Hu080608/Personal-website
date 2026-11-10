@@ -74,7 +74,6 @@ export default function Home() {
             </span>
             <span className="hero__title-line hero__title-line--second">
               <span className="hero__title-outline">{profile.meta.lastName}</span>
-              <span className="hero__title-dot">.</span>
             </span>
           </h1>
 

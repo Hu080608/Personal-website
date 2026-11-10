@@ -5,9 +5,9 @@ import { useReducedMotion } from '../../hooks/useReducedMotion'
  * A looping type / delete cycle. Keeps a single timeout in flight and clears
  * it on unmount so route changes never leave background work behind.
  */
-export function Typewriter({ words, className = '', typeSpeed = 55, deleteSpeed = 28, hold = 1400 }) {
+export function Typewriter({ words, className = '', typeSpeed = 55, deleteSpeed = 28, hold = 1700 }) {
   const [index, setIndex] = useState(0)
-  const [length, setLength] = useState(0)
+  const [length, setLength] = useState(words[0]?.length || 0)
   const [deleting, setDeleting] = useState(false)
   const reduced = useReducedMotion()
   const timeout = useRef(null)

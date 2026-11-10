@@ -147,3 +147,42 @@
 @keyframes fallback-spin {
   to { transform: rotate(360deg); }
 }
+
+/* Keep mixed-case English product names intact inside Chinese headings. */
+.hero__title,
+.page-title,
+.display-heading,
+.section-header__title,
+.hero__role,
+.project-card__title,
+.project-modal__hero h2,
+.home-post h3,
+.home-cta__panel h2,
+.manifesto-grid__quote p,
+.story-side-note p,
+.capability-card h3,
+.skill-matrix__head h3,
+.timeline-item__body h3,
+.principle-card h3,
+.about-now h3,
+.process-card h3,
+.projects-cta__panel h2,
+.experiment-card__title,
+.lab-note h3,
+.lab-footer h3,
+.featured-post h2,
+.post-row__body strong,
+.topic-card h3,
+.blog-cta__panel h2,
+.article-hero h1,
+.article-body h2,
+.article-body h3,
+.article-body blockquote p,
+.next-post h2,
+.post-cta__panel h2,
+.contact-success h2,
+.availability-item h3,
+.contact-last h2,
+.not-found__content h1 {
+  text-transform: none !important;
+}

@@ -91,13 +91,18 @@
 .hero__overline .mono-label { color: var(--dim); }
 
 .hero__title {
-  font-size: clamp(4.4rem, 15.7vw, 14.5rem);
-  line-height: 0.76;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: 0.035em;
+  font-size: clamp(4.2rem, 15vw, 13.5rem);
+  line-height: 0.92;
   letter-spacing: -0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
-.hero__title-line { display: block; }
-.hero__title-line--second { display: flex; align-items: baseline; gap: 0.08em; }
+.hero__title-line { display: inline-flex; }
+.hero__title-line--second { display: inline-flex; align-items: baseline; gap: 0.08em; }
 .hero__title-first {
   background: linear-gradient(95deg, #ffffff 5%, #bffaff 38%, #8e9dff 66%, #d897ff 95%);
   -webkit-background-clip: text;
@@ -786,10 +791,10 @@
   .hero__overline { gap: 8px; margin-bottom: 28px; font-size: 0.44rem; max-width: 90%; }
   .hero__overline-line { width: 22px; }
   .hero__overline .mono-label { display: none; }
-  .hero__title { font-size: clamp(3.65rem, 19vw, 7.8rem); line-height: 0.8; }
+  .hero__title { font-size: clamp(3.2rem, 18.5vw, 7.2rem); line-height: 0.96; }
   .hero__title-dot { display: none; }
   .hero__role-row { gap: 8px; margin-top: 24px; }
-  .hero__role-prefix { width: 100%; font-size: 0.46rem; }
+  .hero__role-prefix { width: auto; flex: 0 0 auto; font-size: 0.46rem; }
   .hero__role { font-size: clamp(0.86rem, 4vw, 1.15rem); }
   .hero__intro { max-width: 95%; font-size: 0.86rem; line-height: 1.7; }
   .hero__actions { gap: 8px; margin-top: 23px; }
@@ -955,7 +960,7 @@
 @media (max-width: 480px) {
   .brand__word { font-size: 0.68rem; letter-spacing: 0.12em; }
   .brand__mark { width: 25px; height: 25px; }
-  .hero__title { font-size: clamp(3.25rem, 20vw, 5.3rem); }
+  .hero__title { font-size: clamp(3rem, 18.5vw, 5rem); }
   .hero__intro { font-size: 0.81rem; }
   .hero__actions .neon-button { width: 100%; flex: auto; }
   .hero__stats { margin-top: 27px; }
@@ -986,7 +991,7 @@
 @media (max-width: 375px) {
   :root { --gutter: 15px; }
   .hero__overline { max-width: 100%; font-size: 0.4rem; }
-  .hero__title { font-size: 3.1rem; }
+  .hero__title { font-size: 2.95rem; }
   .hero__role { font-size: 0.8rem; }
   .hero-stat__value { font-size: 1.05rem; }
   .hero-stat__label { font-size: 0.4rem; }
