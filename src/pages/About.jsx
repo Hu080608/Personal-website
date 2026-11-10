@@ -37,17 +37,17 @@ export default function About() {
       <section className="page-hero about-hero">
         <div className="container">
           <div className="page-hero__top mono-label">
-            <span>01 // 起源信号</span>
+            <span>01 // 关于我</span>
             <span>{profile.meta.coordinates}</span>
             <span>档案：在线</span>
           </div>
           <div className="about-hero__grid">
             <div className="about-hero__title-wrap">
               <Reveal>
-                <span className="eyebrow">人与机器的接口</span>
+                <span className="eyebrow">开发者 / 工具制作者</span>
                 <h1 className="page-title">
-                  会<span className="text-gradient">落地</span>的设计师，<br />
-                  会<span className="text-outline">做梦</span>的工程师。
+                  把<span className="text-gradient">重复劳动</span>，<br />
+                  做成真正能用的<span className="text-outline">工具</span>。
                 </h1>
               </Reveal>
             </div>
@@ -79,7 +79,7 @@ export default function About() {
         <div className="container about-story__grid">
           <Reveal className="about-story__sticky">
             <span className="mono-label">个人日志 / 001—003</span>
-            <h2 className="display-heading">由好奇心构建，<br /><span className="text-gradient">在迭代中调校。</span></h2>
+            <h2 className="display-heading">由公开项目构建，<br /><span className="text-gradient">在维护中调校。</span></h2>
             <div className="about-status-list">
               {profile.about.status.map((item) => (
                 <div key={item.label}>
@@ -98,7 +98,7 @@ export default function About() {
             ))}
             <Reveal className="story-side-note glass-panel" delay={120}>
               <span className="mono-label">理念 / 斜杠</span>
-              <p>先设计感受，再设计能够复现这种感受的系统。</p>
+              <p>先让工具跑通，再让界面变得清楚。</p>
               <span className="story-side-note__sign">— {profile.meta.initials}</span>
             </Reveal>
           </div>
@@ -110,15 +110,15 @@ export default function About() {
           <SectionHeader
             index="02"
             eyebrow="能力矩阵"
-            title="T 型能力，一根很深的竖线。"
-            copy="这张雷达图不是评分表，而是一张地图：我能在哪里快速移动，在哪里深挖，以及在哪里与专家协作。"
+            title="技术方向，来自真实项目。"
+            copy="这张图统计公开项目中各技术方向的出现次数，不是主观评分。每个方向都能在下面的能力矩阵和项目档案里找到对应证据。"
           />
           <div className="capability-layout">
             <Reveal className="capability-radar">
               <RadarChart data={profile.about.radar} />
               <div className="capability-radar__legend">
-                <span><i className="legend-dot legend-dot--cyan" />当前范围</span>
-                <span><i className="legend-dot legend-dot--violet" />成长边缘</span>
+                <span><i className="legend-dot legend-dot--cyan" />项目数量</span>
+                <span><i className="legend-dot legend-dot--violet" />按公开仓库统计</span>
               </div>
             </Reveal>
             <div className="skill-matrix">
@@ -146,8 +146,8 @@ export default function About() {
           <SectionHeader
             index="03"
             eyebrow="传输历史"
-            title="一份由有用意外组成的时间线。"
-            copy="每一段经历都为我的工作室添了一件新乐器。这是这套实践如何被组装起来的简短版本。"
+            title="一个从九月开始的公开构建时间线。"
+            copy="每个项目都补上一块新的工程能力。这是从公开仓库的创建与发布时间整理出的简短版本。"
           />
           <div className="timeline">
             <div className="timeline__line" aria-hidden="true" />
@@ -176,8 +176,8 @@ export default function About() {
           <SectionHeader
             index="04"
             eyebrow="运行原则"
-            title="代码是材料，品味是约束。"
-            copy="四条规则，让有野心的作品在截止日期逼近时仍然保持诚实。"
+            title="代码是材料，可用是约束。"
+            copy="四条规则，让个人工具在真实使用、异常情况和长期维护中保持可靠。"
           />
           <div className="principles-grid">
             {profile.about.principles.map((principle, index) => (
@@ -192,10 +192,10 @@ export default function About() {
           <Reveal className="about-now glass-panel" delay={100}>
             <div>
               <span className="mono-label">现在 / 关注领域</span>
-              <h3><ScrambleText text="构建让复杂系统拥有生命感的工具。" trigger="view" /></h3>
+              <h3><ScrambleText text="继续把具体麻烦做成可用工具。" trigger="view" /></h3>
             </div>
             <p>
-              目前正在原型化一套实时品牌引擎，研究环境信息设计，并撰写一份关于创意工程的小型现场指南。当前状态：{profile.meta.availability}。
+              目前主要维护 HuConverter、DJI D-Log M Batch Grader、music_dl 与 CrushChatAnalyzer，并继续整理公开文档与发布记录。联系状态：{profile.meta.availability}。
             </p>
             <NeonButton to="/contact" icon="arrow">开始对话</NeonButton>
           </Reveal>

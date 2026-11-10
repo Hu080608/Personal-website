@@ -60,7 +60,7 @@ export default function Lab() {
                 一块用于 Shader、文字、声音与数据实验的工作台。没有幻灯片，没有静态稿。这里的一切，此刻都在你的浏览器里运行。
               </p>
               <p>
-                这些模块也是客户项目的积木：一个 Shader 可以变成品牌世界，一个终端可以变成引导流程，一条波形可以变成实时产品信号。
+                这些模块全部运行在这个静态站点里，用来展示 WebGL、Canvas、终端交互和文字动效。它们不是产品截图，也不是视频演示。
               </p>
             </Reveal>
           </div>
@@ -166,7 +166,7 @@ export default function Lab() {
             index="05"
             eyebrow="实验室协议"
             title="实验如何保持诚实。"
-            copy="三条规则，避免“游乐场能量”变成生产债务。"
+            copy="三条规则，让页面里的视觉效果不脱离性能、无障碍与真实内容。"
           />
           <div className="lab-notes">
             {labNotes.map((note, index) => (
@@ -179,13 +179,13 @@ export default function Lab() {
           </div>
           <Reveal className="lab-footer glass-panel" delay={100}>
             <div>
-              <span className="mono-label">即将开源</span>
-              <h3><ScrambleText text="这些实验想成为真正的工具。" trigger="view" /></h3>
+              <span className="mono-label">本站实验</span>
+              <h3><ScrambleText text="这个实验室用来验证网页能做到什么。" trigger="view" /></h3>
             </div>
             <p>
-              我正在把实验室里可复用的部分抽成一套小型开源工具包：动效原语、Shader 辅助函数，以及可由屏幕阅读器安全读取的文字乱码器。想提前体验，欢迎联系。
+              Shader、遥测、终端和字符解码都运行在浏览器中，并且为移动端与减少动效偏好提供了降级方案。如果你发现 Bug 或有改进建议，欢迎到 GitHub 反馈。
             </p>
-            <NeonButton to="/contact" icon="send">申请访问</NeonButton>
+            <NeonButton href={profile.meta.contactUrl} icon="external">前往 GitHub</NeonButton>
           </Reveal>
         </div>
       </section>

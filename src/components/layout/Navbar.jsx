@@ -120,8 +120,8 @@ export function Navbar() {
             ))}
           </nav>
           <div className="mobile-menu__footer">
-            <a href={`mailto:${profile.meta.email}`} className="mobile-menu__email">
-              {profile.meta.email}
+            <a href={profile.meta.contactUrl} className="mobile-menu__email" target="_blank" rel="noreferrer">
+              github.com/Hu080608
             </a>
             <div className="mobile-menu__socials">
               {profile.socials.map((social) => (

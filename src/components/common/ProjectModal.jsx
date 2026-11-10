@@ -94,9 +94,9 @@ export function ProjectModal({ project, onClose }) {
           <div className="project-modal__copy">
             <h3>项目背景</h3>
             <p>{project.description}</p>
-            <h3>核心挑战</h3>
+            <h3>技术难点</h3>
             <p>{project.challenge}</p>
-            <h3>结果信号</h3>
+            <h3>当前状态</h3>
             <p>{project.outcome}</p>
           </div>
           <aside className="project-modal__aside">

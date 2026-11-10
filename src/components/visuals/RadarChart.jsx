@@ -13,16 +13,17 @@ function pointAt(index, total, radius) {
 export function RadarChart({ data }) {
   const gradientId = useId().replaceAll(':', '')
   const total = data.length
+  const maxValue = Math.max(...data.map((item) => item.value), 1)
   const gridLevels = [0.25, 0.5, 0.75, 1]
   const points = data
-    .map((item, index) => pointAt(index, total, (item.value / 100) * RADIUS))
+    .map((item, index) => pointAt(index, total, (item.value / maxValue) * RADIUS))
     .map(([x, y]) => `${x},${y}`)
     .join(' ')
 
   return (
     <div className="radar-chart">
       <svg viewBox={`0 0 ${SIZE} ${SIZE}`} role="img" aria-labelledby={`${gradientId}-title`}>
-        <title id={`${gradientId}-title`}>Capability radar: {data.map((item) => `${item.label} ${item.value}%`).join(', ')}</title>
+        <title id={`${gradientId}-title`}>技术方向项目数量：{data.map((item) => `${item.label} ${item.value}`).join('，')}</title>
         <defs>
           <radialGradient id={`${gradientId}-fill`} cx="50%" cy="50%" r="70%">
             <stop offset="0%" stopColor="#6ff7ff" stopOpacity="0.38" />
@@ -63,7 +64,7 @@ export function RadarChart({ data }) {
         />
 
         {data.map((item, index) => {
-          const [x, y] = pointAt(index, total, (item.value / 100) * RADIUS)
+          const [x, y] = pointAt(index, total, (item.value / maxValue) * RADIUS)
           return <circle key={item.label} cx={x} cy={y} r="3" fill="#d7fbff" className="radar-chart__node" />
         })}
 
@@ -76,7 +77,7 @@ export function RadarChart({ data }) {
                 {item.label}
               </text>
               <text x={x} y={y + 12} textAnchor={anchor} className="radar-chart__value">
-                {item.value}%
+                {item.value}
               </text>
             </g>
           )

@@ -31,22 +31,22 @@ export default function Blog() {
         <div className="container">
           <div className="page-hero__top mono-label">
             <span>04 // 现场笔记</span>
-            <span>{profile.posts.length} 篇传输</span>
+            <span>{profile.posts.length} 篇文章</span>
             <span>RSS：即将上线</span>
           </div>
           <div className="blog-hero__grid">
             <Reveal>
               <span className="eyebrow">随笔 / 过程 / 实验室笔记</span>
               <h1 className="page-title">
-                来自<br /><span className="text-gradient">信号</span>的笔记。
+                项目<br /><span className="text-gradient">复盘</span>与工程笔记。
               </h1>
             </Reveal>
             <Reveal className="blog-hero__copy" delay={100}>
               <p className="lead-copy">
-                关于空间界面、动效系统、生成式氛围，以及如何让数字事物拥有生命感的文章。
+                关于 Python 工具、AI 应用、音视频处理和静态 Web 的项目复盘与工程笔记。
               </p>
               <p>
-                没有增长黑客，没有清单体。只有来自工作内部的现场笔记：决定、死路，以及偶尔有用的框架。
+                所有文章都从公开仓库里的真实实现出发：为什么这样选型、哪里踩过坑，以及最后怎样把它发布出去。
               </p>
             </Reveal>
           </div>
@@ -93,8 +93,8 @@ export default function Blog() {
           <SectionHeader
             index="02"
             eyebrow="文章档案"
-            title="全部传输记录。"
-            copy="按主题浏览或搜索日志。每篇文章都源于真实项目的约束，即使项目本身是虚构的。"
+            title="全部文章。"
+            copy="按主题浏览或搜索日志。每篇文章都对应一个公开仓库，涉及 Python、AI、Cloudflare 和静态 Web。"
           />
 
           <div className="blog-toolbar">
@@ -147,7 +147,7 @@ export default function Blog() {
             ))}
             {!posts.length ? (
               <div className="blog-empty glass-panel">
-                <span className="mono-label">未找到信号</span>
+                <span className="mono-label">未找到文章</span>
                 <p>换一个主题或搜索词试试。档案不大，但很精确。</p>
                 <button type="button" className="text-link" onClick={() => { setTag('全部'); setQuery('') }}>
                   Reset filters
@@ -163,14 +163,14 @@ export default function Blog() {
         <div className="container blog-topics">
           <Reveal>
             <span className="mono-label">反复出现的主题</span>
-            <h2 className="display-heading">我反复回到的问题。</h2>
+            <h2 className="display-heading">项目里反复出现的技术问题。</h2>
           </Reveal>
           <div className="topic-grid">
             {[
-              ['空间 UX', '当矩形溶解之后，层级、距离与注意力如何改变。'],
-              ['动效系统', '为界面建立共享的物理规则，让动效显得理所当然。'],
-              ['实时工艺', 'Shader、性能预算，以及优雅降级的艺术。'],
-              ['创意过程', '如何在不牺牲上线的同时，保住野心。'],
+              ['Python 桌面工具', '把本地脚本做成可安装、可更新、可排错的 Windows 程序。'],
+              ['AI 应用', '在不暴露密钥的前提下接入 DeepSeek、流式对话与本地数据。'],
+              ['边缘与静态部署', 'GitHub Pages、Cloudflare Worker 和 KV 能承担多少产品逻辑。'],
+              ['发布与维护', 'README、测试、版本号、Release 和问题反馈同样是产品的一部分。'],
             ].map(([title, copy], index) => (
               <Reveal key={title} className="topic-card" delay={index * 70}>
                 <span className="mono-label">0{index + 1}</span>
@@ -187,11 +187,11 @@ export default function Blog() {
           <Reveal className="blog-cta__panel glass-panel">
             <span className="mono-label">频道已开放</span>
             <h2><ScrambleText text="好的对话本身就是一种原型。" trigger="view" /></h2>
-            <p>如果其中某篇文章与你正在构建的东西产生了连接，我很想听听。最好的项目通常始于一个共同的问题。</p>
+            <p>如果其中某篇文章与你正在做的项目有关，欢迎到 GitHub 交流，或直接打开对应仓库查看源码与 Issues。</p>
             <div className="blog-cta__actions">
-              <NeonButton to="/contact" icon="send">发送信号</NeonButton>
-              <a href={`mailto:${profile.meta.email}`} className="text-link" data-cursor="link">
-                {profile.meta.email}
+              <NeonButton to="/contact" icon="send">联系我</NeonButton>
+              <a href={profile.meta.contactUrl} className="text-link" data-cursor="link" target="_blank" rel="noreferrer">
+                github.com/Hu080608
                 <Icon name="arrow" size={15} />
               </a>
             </div>

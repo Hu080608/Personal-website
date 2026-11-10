@@ -62,7 +62,7 @@ export function Loader({ onComplete }) {
         </div>
         <div className="loader__meta mono-label">
           <span>神经链路 / 安全</span>
-          <span>构建 4.2.0</span>
+          <span>公开构建 2026</span>
         </div>
       </div>
     </div>

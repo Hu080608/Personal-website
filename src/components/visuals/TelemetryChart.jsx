@@ -231,8 +231,8 @@ export function TelemetryChart() {
         <div><span className="mono-label">采样率</span><strong>30 fps</strong></div>
       </div>
       <div className="telemetry__footer mono-label">
-        <span>发送: NEXUS-07</span>
-        <span>接收: 本地主机</span>
+        <span>发送: HU080608</span>
+        <span>接收: 浏览器本地</span>
         <span>数据包: 1,204,882</span>
       </div>
     </div>

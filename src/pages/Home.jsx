@@ -79,7 +79,7 @@ export default function Home() {
           </h1>
 
           <div className="hero__role-row">
-            <span className="hero__role-prefix mono-label">操作者档案 //</span>
+            <span className="hero__role-prefix mono-label">开发者 /</span>
             <Typewriter words={profile.hero.roles} className="hero__role" />
           </div>
 
@@ -107,12 +107,12 @@ export default function Home() {
         <div className="hero__rail hero__rail--left" aria-hidden="true">
           <span>{profile.meta.coordinates}</span>
           <span className="hero__rail-line" />
-          <span>信号强度 / 98.4</span>
+          <span>GITHUB / 公开仓库</span>
         </div>
         <div className="hero__rail hero__rail--right" aria-hidden="true">
           <span>向下滚动解码</span>
           <span className="hero__rail-line" />
-          <span>{profile.meta.initials.split('').join(' / ')} — 4.2</span>
+          <span>PUBLIC BUILD 2026</span>
         </div>
 
         <a href="#signal" className="scroll-cue" aria-label="向下滚动到内容" data-cursor="link">
@@ -141,11 +141,11 @@ export default function Home() {
             <Reveal className="signal-grid__intro">
               <div className="section-header__eyebrow">
                 <span className="section-header__index">01</span>
-                <span className="mono-label">起源信号</span>
+                <span className="mono-label">关于我</span>
                 <span className="section-header__line" />
               </div>
               <h2 className="display-heading">
-                在<span className="text-gradient">不可能</span>的艺术方向与可上线的代码之间。
+                从<span className="text-gradient">具体麻烦</span>出发，把重复劳动做成工具。
               </h2>
             </Reveal>
 
@@ -153,7 +153,7 @@ export default function Home() {
               <p className="lead-copy">{profile.about.lead}</p>
               <p>{profile.about.paragraphs[0]}</p>
               <Link to="/about" className="text-link" data-cursor="link">
-                阅读完整档案
+                阅读完整介绍
                 <Icon name="arrow" size={15} />
               </Link>
             </Reveal>
@@ -181,13 +181,13 @@ export default function Home() {
           <div className="section-topline">
             <SectionHeader
               index="02"
-              eyebrow="精选传输"
+              eyebrow="精选项目"
               title="作品会留下痕迹。"
-              copy="为那些站在浏览器能力边缘的团队，构建品牌识别、界面与系统。"
+              copy="Python 桌面工具、AI 应用与静态 Web。它们都从一个具体麻烦开始，并尽量在本地解决。"
             />
             <Reveal delay={160}>
               <NeonButton to="/projects" variant="ghost" icon="arrow">
-                全部案例
+                全部项目
               </NeonButton>
             </Reveal>
           </div>
@@ -207,8 +207,8 @@ export default function Home() {
           <SectionHeader
             index="03"
             eyebrow="能力矩阵"
-            title="完整的创意实践。"
-            copy="我在白板、设计文件和渲染循环之间来回移动。贯穿始终的，是对“回应时的手感”近乎偏执的关注。"
+            title="一套务实的技术栈。"
+            copy="我偏向用可靠的基础设施解决具体问题：Python 处理本地任务，FFmpeg 处理多媒体，Cloudflare 承担边缘逻辑，Vite 负责把前端交付上线。"
           />
 
           <div className="capability-grid">
@@ -231,7 +231,7 @@ export default function Home() {
           <div className="capability-footer">
             <Reveal>
               <p className="mono-label">正在探索</p>
-              <p className="capability-footer__marquee">空间界面 · 生成式品牌 · 实时数据 · WEBGPU · 环境计算</p>
+              <p className="capability-footer__marquee">Python · FFmpeg · DeepSeek · Cloudflare · Vite · GitHub Actions</p>
             </Reveal>
             <Reveal delay={100}>
               <Link to="/lab" className="text-link" data-cursor="link">
@@ -247,11 +247,11 @@ export default function Home() {
         <div className="container manifesto-grid">
           <Reveal className="manifesto-grid__marker">
             <span className="manifesto-index">04</span>
-            <span className="mono-label">设计宣言</span>
+            <span className="mono-label">工程宣言</span>
           </Reveal>
           <Reveal className="manifesto-grid__quote" delay={90}>
             <p data-parallax="-32">
-              屏幕不是终点，而是通往未知的<span className="text-gradient">入口</span>。
+              能稳定运行、能被别人使用、能继续维护的工具，才算真正<span className="text-gradient">完成</span>。
             </p>
             <div className="manifesto-grid__foot">
               <span className="mono-label">{profile.meta.name} / {new Date().getFullYear()}</span>
@@ -276,8 +276,8 @@ export default function Home() {
             <SectionHeader
               index="05"
               eyebrow="现场笔记"
-              title="来自工作的信号。"
-              copy="关于界面、动效、性能，以及构建可信数字世界这门奇怪手艺的随笔。"
+              title="项目复盘与工程笔记。"
+              copy="关于 Python 工具、AI 应用、Cloudflare 与静态 Web 的项目复盘和工程笔记。"
             />
             <Reveal delay={120}>
               <NeonButton to="/blog" variant="ghost" icon="arrow">
@@ -311,13 +311,13 @@ export default function Home() {
         <div className="container">
           <Reveal className="home-cta__panel glass-panel">
             <div className="home-cta__orb" aria-hidden="true" />
-            <span className="mono-label">频道开放 / 48 小时内回复</span>
-            <h2>有值得放大的信号吗？</h2>
+            <span className="mono-label">通过 GitHub 交流</span>
+            <h2>有项目或问题想交流？</h2>
             <p>{profile.contact.lead}</p>
             <div className="home-cta__actions">
-              <NeonButton to="/contact" icon="send">开启频道</NeonButton>
-              <a href={`mailto:${profile.meta.email}`} className="text-link" data-cursor="link">
-                {profile.meta.email}
+              <NeonButton to="/contact" icon="send">查看联系方式</NeonButton>
+              <a href={profile.meta.contactUrl} className="text-link" data-cursor="link" target="_blank" rel="noreferrer">
+                github.com/Hu080608
                 <Icon name="arrow" size={15} />
               </a>
             </div>

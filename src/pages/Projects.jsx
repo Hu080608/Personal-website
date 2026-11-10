@@ -13,23 +13,23 @@ import { Icon } from '../components/common/Icon'
 const processSteps = [
   {
     index: '01',
-    title: '定位信号',
-    text: '一次短促而高强度的探索冲刺，找到项目必须讲清楚的唯一核心。我们共同梳理受众、约束、参考与技术未知。',
+    title: '发现问题',
+    text: '先确认它是不是一个真实、重复、值得自动化的麻烦。输入是什么？输出是什么？失败时会发生什么？',
   },
   {
     index: '02',
-    title: '原型化不可能',
-    text: '最危险的假设会最先被做出来。一个 Shader 测试、一段动效研究、一条实时数据流：它要真实到可以被争论，又足够早，能够改变方向。',
+    title: '本地实现',
+    text: '优先用 Python、FFmpeg、SQLite 或浏览器原生能力做出可运行版本。先让主流程跑通，再决定哪些部分需要 AI 或云服务。',
   },
   {
     index: '03',
-    title: '构建系统',
-    text: '原型会变成设计系统与工程计划。令牌、组件、性能预算与无障碍规则，从一开始就一起定义。',
+    title: '补齐异常',
+    text: '批量任务会失败，接口会变，编码器会不可用。日志、重试、回退、取消、清理临时文件和可读错误提示，和主流程同等重要。',
   },
   {
     index: '04',
-    title: '调校上线',
-    text: '最后 10% 才是魔法所在。我们做性能分析、优雅降级、写文档，并确保作品在交接之后依然有生命感。',
+    title: '文档发布',
+    text: '写清 README、安装方式、参数说明、许可证和发布记录。一个别人能安装、能验证、能反馈的工具才算真正上线。',
   },
 ]
 
@@ -46,23 +46,23 @@ export default function Projects() {
       <section className="page-hero projects-hero">
         <div className="container">
           <div className="page-hero__top mono-label">
-            <span>02 // 作品档案</span>
-            <span>{profile.projects.length} 个案例</span>
+            <span>02 // 项目档案</span>
+            <span>{profile.projects.length} 个公开项目</span>
             <span>状态：已解密</span>
           </div>
           <div className="projects-hero__grid">
             <Reveal>
-              <span className="eyebrow">精选传输</span>
+              <span className="eyebrow">精选项目</span>
               <h1 className="page-title">
-                创造有<br /><span className="text-gradient">脉搏</span>的作品。
+                把麻烦<br />做成<span className="text-gradient">工具。</span>
               </h1>
             </Reveal>
             <Reveal className="projects-hero__copy" delay={120}>
               <p className="lead-copy">
-                为那些仍然相信浏览器是世界上最有趣画布的人，构建品牌世界、空间界面与实时系统。
+                这里收录我的原创项目：Python 桌面工具、AI 应用、音视频处理与静态 Web。它们都公开在 GitHub 上。
               </p>
               <p>
-                下面每一个案例都始于同一个问题的变体：如何让复杂的东西感觉即刻可懂？打开任意卡片，查看项目背景、核心挑战与可量化的结果。
+                每个项目都从一个具体问题开始。打开卡片可以查看项目背景、技术难点、当前状态和真实仓库链接。
               </p>
               <div className="projects-hero__hint">
                 <Icon name="cube" size={18} />
@@ -78,7 +78,7 @@ export default function Projects() {
           <div className="filter-bar">
             <div className="filter-bar__left">
               <span className="mono-label">按领域筛选</span>
-              <div className="filter-chips" role="group" aria-label="按类别筛选作品">
+              <div className="filter-chips" role="group" aria-label="按类别筛选项目">
                 {categories.map((category) => (
                   <button
                     key={category}
@@ -123,9 +123,9 @@ export default function Projects() {
         <div className="container">
           <SectionHeader
             index="03"
-            eyebrow="方法 / 从信号到上线"
-            title="为模糊而生的流程。"
-            copy="野心需要一个容器。这是我带给复杂创意项目的四阶段工作节奏。"
+            eyebrow="方法 / 从问题到发布"
+            title="一套务实的开发流程。"
+            copy="这套流程来自我的个人项目：先解决真实问题，再处理异常、写文档并发布。它不是装饰性的方法论。"
           />
           <div className="process-grid">
             {processSteps.map((step, index) => (
@@ -149,8 +149,8 @@ export default function Projects() {
             <SectionHeader
               index="04"
               eyebrow="完整索引"
-              title="抽屉里的每一份档案。"
-              copy="一份紧凑的档案索引，包含自主研究和尚未准备好公开的项目。"
+              title="全部公开项目。"
+              copy="包含全部 7 个公开项目，点击即可查看技术栈、当前状态与真实仓库链接。"
             />
           </div>
           <div className="archive-table">
@@ -177,7 +177,7 @@ export default function Projects() {
                 </span>
                 <span>{project.category}</span>
                 <span>{project.year}</span>
-                <span className="archive-table__status"><i /> 已发布</span>
+                <span className="archive-table__status"><i /> 已公开</span>
               </button>
             ))}
           </div>
@@ -187,10 +187,10 @@ export default function Projects() {
       <section className="section projects-cta">
         <div className="container">
           <Reveal className="projects-cta__panel glass-panel">
-            <span className="mono-label">下一个案例 / 属于你</span>
-            <h2>档案库里，还留着一个信号的位置。</h2>
-            <p>把那个相对于时间线显得有点过于有野心的项目带给我。有趣的作品通常就住在那里。</p>
-            <NeonButton to="/contact" icon="send">开始一份需求</NeonButton>
+            <span className="mono-label">项目反馈 / 交流</span>
+            <h2>有 Bug、建议或新的项目想法？</h2>
+            <p>欢迎通过 GitHub Issues 反馈，或到 GitHub 主页查看全部公开仓库。</p>
+            <NeonButton href={profile.meta.contactUrl} icon="external">前往 GitHub</NeonButton>
           </Reveal>
         </div>
       </section>

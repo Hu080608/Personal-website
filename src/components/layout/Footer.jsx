@@ -19,13 +19,13 @@ export function Footer() {
       <div className="container">
         <div className="site-footer__top">
           <div className="site-footer__statement">
-            <span className="mono-label">信号结束</span>
+            <span className="mono-label">页面结束</span>
             <p>
               <ScrambleText text={profile.footer.statement} trigger="view" />
             </p>
           </div>
-          <a href={`mailto:${profile.meta.email}`} className="site-footer__email" data-cursor="link" data-cursor-label="邮件">
-            <span>{profile.meta.email}</span>
+          <a href={profile.meta.contactUrl} className="site-footer__email" data-cursor="link" data-cursor-label="GitHub" target="_blank" rel="noreferrer">
+            <span>github.com/Hu080608</span>
             <Icon name="arrow" size={28} />
           </a>
         </div>
@@ -62,7 +62,7 @@ export function Footer() {
           </div>
 
           <div className="site-footer__col">
-            <h3 className="mono-label">联系频道</h3>
+            <h3 className="mono-label">联系方式</h3>
             {profile.socials.map((social) => (
               <a key={social.label} href={social.url} target="_blank" rel="noreferrer" data-cursor="link">
                 {social.label}
@@ -82,7 +82,7 @@ export function Footer() {
         </div>
 
         <div className="site-footer__bottom">
-          <p>© {year} {profile.meta.name}. 保留所有信号。</p>
+          <p>© {year} {profile.meta.name}. 保留所有权利。</p>
           <p className="site-footer__built">
             <span>公开设计与构建</span>
             <span className="footer-pulse" aria-hidden="true" />

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { profile } from '../../config/profile'
 
 const bootLines = [
-  { type: 'system', text: 'NEXUS//SHELL v4.2.0 — 安全本地会话' },
+  { type: 'system', text: 'HU080608//SHELL — 安全本地会话' },
   { type: 'muted', text: '连接已建立。输入 `help` 查看可用命令。' },
   { type: 'muted', text: '无网络访问。所有数据都打包在你的浏览器中。' },
 ]
@@ -75,8 +75,8 @@ export function TerminalLab() {
         break
       case 'contact':
         response.push({ type: 'success', text: '直接频道' })
-        response.push({ type: 'muted', text: `邮箱  ${profile.meta.email}` })
-        response.push({ type: 'muted', text: `站点  #/contact` })
+        response.push({ type: 'muted', text: `GitHub  ${profile.meta.contactUrl}` })
+        response.push({ type: 'muted', text: `联系  #/contact` })
         break
       case 'date':
         response.push({ type: 'muted', text: `本地时间  ${new Date().toLocaleString()}` })

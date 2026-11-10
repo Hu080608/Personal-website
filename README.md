@@ -1,293 +1,170 @@
-# NEXUS/AETHER — Sci-Fi Portfolio
+# HU080608 — 个人作品集
 
-A multi-page, neon-sci-fi personal portfolio built as a **pure static site** and tuned for GitHub Pages. It pairs a production-minded React architecture with GPU particles, a live WebGL shader, a simulated terminal, canvas telemetry, custom typography and a full motion system.
+这是一个以真实公开项目为基础的多页面个人作品集。站点使用 **React + Vite** 构建为纯静态站点，通过 **GitHub Actions** 自动部署到 **GitHub Pages**，不依赖后端服务。
 
-> All personal content is fictional placeholder data. Replace one config file to make the site yours.
+- 线上地址：https://hu080608.github.io/Personal-website/
+- GitHub：https://github.com/Hu080608
+- 作者：胡胜杰（@Hu080608）
 
----
-
-## 1. Tech stack
-
-| Layer | Choice | Why |
-| --- | --- | --- |
-| Framework | **React 18 + Vite 6** | Static export, fast builds, zero server runtime |
-| Routing | **React Router 6 (HashRouter)** | `/#/about` style routes work on GitHub Pages sub-paths without server rewrites |
-| Styling | **Native CSS + design tokens** | Fine control over glass, glow, grids, scanlines and responsive behaviour |
-| 3D / GPU | **Three.js + custom GLSL ShaderMaterial** | GPU particle atmosphere on the home page |
-| Motion | **GSAP + ScrollTrigger, Framer Motion, IntersectionObserver** | Parallax, route transitions, reveal choreography |
-| Data visuals | **SVG + Canvas 2D + raw WebGL** | Capability radar, animated telemetry, interactive shader lab |
-| Fonts | **@fontsource** (Orbitron, Space Grotesk, JetBrains Mono) | Self-hosted, no external font CDN |
-| Icons | Inline SVG component | No icon-font or external asset request |
-| Deploy | **GitHub Actions → GitHub Pages** | One push builds and publishes `dist/` |
-
-Everything is local except the placeholder social profile links. No API keys, backend endpoints or private assets are required.
+页面中的项目、技术栈、文章和联系方式均来自公开 GitHub 仓库与仓库 README，不包含虚构履历或无关内容。
 
 ---
 
-## 2. Pages and routes
+## 1. 技术栈
 
-| Route | Page | Content blocks / highlights |
-| --- | --- | --- |
-| `/#/` | Home | Full-screen 3D particle hero, glitch title, typewriter, marquee, origin signal, selected work, capability matrix, manifesto, field notes, contact CTA |
-| `/#/about` | About | Profile hero, origin story, radar + capability matrix, timeline, principles, current focus |
-| `/#/projects` | Projects | Filterable 3D tilt card grid, full case-study modal, process, archive table, CTA |
-| `/#/lab` | Lab | WebGL shader switcher, simulated terminal, live telemetry canvas, glyph decoder, lab protocol notes |
-| `/#/blog` | Log | Featured article, tag filters, live search, article rows, recurring themes, CTA |
-| `/#/blog/:slug` | Article | Full long-form essay, reading progress, table of contents, author card, next article |
-| `/#/contact` | Contact | Validated local form, success state with mailto handoff, contact cards, availability, FAQ accordion |
-| `/#/anything-else` | 404 | Glitch 404, route diagnostics, quick links |
-
-The 404 route is client-side and also works on GitHub Pages because all navigation lives after the hash.
+| 层 | 方案 |
+| --- | --- |
+| 框架 | React 18 + Vite 6 |
+| 路由 | React Router 6（HashRouter） |
+| 样式 | 原生 CSS 设计令牌、玻璃拟态、霓虹辉光、扫描线与响应式栅格 |
+| 3D / GPU | Three.js + 自定义 GLSL ShaderMaterial |
+| 动效 | GSAP ScrollTrigger、Framer Motion、IntersectionObserver |
+| 数据可视化 | SVG 雷达图、Canvas 2D 遥测、原生 WebGL Shader |
+| 字体 | @fontsource 本地打包（Orbitron / Space Grotesk / JetBrains Mono），中文使用系统中文字体回退 |
+| 部署 | GitHub Actions → GitHub Pages |
 
 ---
 
-## 3. Six required effect systems — where they live
+## 2. 页面与内容
 
-1. **3D / GPU particle background**
-   - Home hero: `src/components/background/ParticleField.jsx`
-   - Three.js custom ShaderMaterial, additive particles, orbital rings, mouse + scroll parallax, adaptive particle density and DPR, full dispose cleanup.
+| 路由 | 页面 |
+| --- | --- |
+| `/#/` | 首页：粒子 Hero、个人简介、精选项目、能力矩阵、工程原则、项目文章 |
+| `/#/about` | 关于：真实项目背景、技术方向统计、项目时间线、工程原则 |
+| `/#/projects` | 项目：按桌面工具 / AI 应用 / Web 筛选，打开真实项目详情 |
+| `/#/lab` | 实验室：WebGL Shader、项目终端、Canvas 遥测、字符解码器 |
+| `/#/blog` | 日志：项目复盘、标签筛选与搜索 |
+| `/#/blog/:slug` | 文章正文：目录、阅读进度、作者卡、下一篇 |
+| `/#/contact` | 联系：GitHub 联系方式、反馈说明、本地演示表单、FAQ |
+| `/#/任意路径` | 404 页面 |
 
-2. **Scroll-triggered animation**
-   - Home + About: GSAP `ScrollTrigger` for `[data-parallax]`; `Reveal.jsx` uses one-shot `IntersectionObserver` across every page for fade/slide-in sections.
-   - Reduced-motion users get static content without parallax.
+### 收录项目
 
-3. **Custom cursor and hover feedback**
-   - `CustomCursor.jsx`: a fast dot + damped outer ring, press state, hover state and `data-cursor-label` verbs such as `VIEW`, `READ`, `OPEN`.
-   - Disabled on coarse pointers / mobile. Native cursor is only hidden after the custom layer initialises.
-
-4. **Page / route transition**
-   - `App.jsx`: Framer Motion `AnimatePresence` with a blur + rise + fade route transition, lazy route chunks and a route decoding fallback.
-   - Mobile navigation uses its own staggered full-screen transition.
-
-5. **Text effects**
-   - Hero: `GlitchText` (CSS pseudo-element glitch) and `Typewriter` (looping roles).
-   - Section labels, footer and lab: `ScrambleText` (viewport-triggered glyph decode).
-   - Lab EXP-004: standalone interactive `GlyphDecoder`.
-   - All timers and observers clean up on unmount.
-
-6. **Dynamic data / graphical visualisation**
-   - About: animated SVG capability radar (`RadarChart.jsx`).
-   - Lab: live Canvas 2D telemetry (`TelemetryChart.jsx`) and a raw WebGL fragment-shader switcher (`ShaderLab.jsx`).
-   - Both adapt resolution and stop rAF work when their components unmount.
-
-Additional details: loading screen, favicon, local fonts, glassmorphism, neon borders, scanlines, animated grid, magnetic-style buttons, accessible reduced-motion fallback.
+- **DJI D-Log M Batch Grader**：DJI 素材批量 LUT 调色与色彩还原工具
+- **HuConverter**：基于 FFmpeg 的音视频批量转换器
+- **music_dl**：多音源搜索与智能匹配的歌曲下载器
+- **CrushChatAnalyzer**：本地优先的微信聊天分析与 AI 回复工具
+- **费曼反向学校**：静态前端 + Cloudflare Worker 的 AI 学习应用
+- **Cyber Girlfriend**：纯静态、本地优先的 AI 角色聊天客户端
+- **学生防诈骗 H5**：移动端反诈宣传页
 
 ---
 
-## 4. Project structure
+## 3. 目录结构
 
 ```text
 nexus-portfolio/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml
+├── .github/workflows/deploy.yml
 ├── public/
 │   ├── .nojekyll
 │   └── favicon.svg
 ├── src/
 │   ├── components/
 │   │   ├── background/
-│   │   │   ├── AmbientBackdrop.jsx
-│   │   │   └── ParticleField.jsx
 │   │   ├── common/
-│   │   │   ├── CustomCursor.jsx
-│   │   │   ├── GlitchText.jsx
-│   │   │   ├── Icon.jsx
-│   │   │   ├── Loader.jsx
-│   │   │   ├── NeonButton.jsx
-│   │   │   ├── ProjectCard.jsx
-│   │   │   ├── ProjectModal.jsx
-│   │   │   ├── Reveal.jsx
-│   │   │   ├── ScrambleText.jsx
-│   │   │   ├── SectionHeader.jsx
-│   │   │   └── Typewriter.jsx
 │   │   ├── layout/
-│   │   │   ├── Footer.jsx
-│   │   │   └── Navbar.jsx
 │   │   └── visuals/
-│   │       ├── GlyphDecoder.jsx
-│   │       ├── RadarChart.jsx
-│   │       ├── ShaderLab.jsx
-│   │       ├── TelemetryChart.jsx
-│   │       └── TerminalLab.jsx
-│   ├── config/
-│   │   └── profile.js          ← EDIT THIS FILE
+│   ├── config/profile.js          ← 全站内容配置
 │   ├── hooks/
-│   │   ├── useDocumentTitle.js
-│   │   ├── useIsTouch.js
-│   │   ├── useReducedMotion.js
-│   │   └── useScrollToTop.js
 │   ├── pages/
-│   │   ├── About.jsx
-│   │   ├── Blog.jsx
-│   │   ├── BlogPost.jsx
-│   │   ├── Contact.jsx
-│   │   ├── Home.jsx
-│   │   ├── Lab.jsx
-│   │   ├── NotFound.jsx
-│   │   └── Projects.jsx
 │   ├── styles/
-│   │   ├── animations.css
-│   │   ├── base.css
-│   │   ├── components.css
-│   │   └── pages.css
 │   ├── App.jsx
 │   └── main.jsx
 ├── index.html
 ├── package.json
-├── package-lock.json
 ├── vite.config.js
 └── README.md
 ```
 
 ---
 
-## 5. Local development
+## 4. 本地运行
 
-Requirements: **Node 20+** (Node 22 LTS recommended) and npm.
+要求 Node.js 20+。
 
 ```bash
-cd nexus-portfolio
 npm install
 npm run dev
 ```
 
-Open the local URL printed by Vite (usually `http://localhost:5173/`).
-
-Production build:
+生产构建与预览：
 
 ```bash
 npm run build
 npm run preview
 ```
 
-`npm run build` outputs a fully static `dist/` folder.
+`npm run build` 会生成可直接静态托管的 `dist/` 目录。
 
 ---
 
-## 6. Make it yours: one config file
+## 5. 修改内容
 
-Open **`src/config/profile.js`** and replace the fictional values with your own.
+所有个人内容集中在：
 
-### Identity
-
-```js
-meta: {
-  name: 'NOVA VOSS',
-  firstName: 'NOVA',
-  lastName: 'VOSS',
-  alias: 'NEXUS/AETHER',
-  role: 'Creative Technologist',
-  email: 'hello@novavoss.studio',
-  location: 'Neo-Tokyo / Remote',
-  // ...
-}
+```text
+src/config/profile.js
 ```
 
-### Projects
+可修改：
 
-Edit the `projects` array. Each project accepts:
+- `meta`：姓名、角色、简介、联系地址
+- `socials`：GitHub 与仓库列表
+- `hero`：首页标题、角色轮播、统计数据
+- `about`：个人介绍、技术方向、时间线、原则
+- `projects`：项目标题、说明、技术栈、指标、GitHub / Release 链接
+- `posts`：文章列表与正文内容
+- `contact`：联系说明与 FAQ
+- `footer`：页脚说明
 
-```js
-{
-  slug: 'your-project',
-  title: 'Project title',
-  subtitle: 'One-line position',
-  category: 'WebGL',
-  year: '2026',
-  client: 'Client name',
-  role: 'Your role',
-  accent: '#6ff7ff',
-  featured: true,
-  summary: 'Card copy',
-  description: 'Case-study brief',
-  challenge: 'The friction',
-  outcome: 'The measurable result',
-  metrics: [{ value: '2.1s', label: 'LCP' }],
-  features: ['Feature one'],
-  stack: ['React', 'Three.js'],
-  links: [{ label: 'View site', href: 'https://example.com' }]
-}
+项目卡片和文章正文支持新增条目，页面会自动更新。
+
+---
+
+## 6. 特效实现
+
+1. **GPU 粒子背景**：`src/components/background/ParticleField.jsx`，Three.js + ShaderMaterial，自适应移动端粒子数量与 DPR。
+2. **滚动动画**：GSAP ScrollTrigger + `Reveal.jsx` 的 IntersectionObserver。
+3. **自定义光标**：`CustomCursor.jsx`，触屏自动禁用。
+4. **路由过渡**：`App.jsx` 中 Framer Motion `AnimatePresence` + 懒加载路由。
+5. **文字特效**：Glitch、Typewriter、ScrambleText、GlyphDecoder。
+6. **动态可视化**：SVG 雷达图、Canvas 遥测、WebGL Shader Lab。
+
+所有 rAF、Observer、Timeout、指针监听和 WebGL 资源在组件卸载时清理。
+
+---
+
+## 7. GitHub Pages 部署
+
+Workflow 已包含在：
+
+```text
+.github/workflows/deploy.yml
 ```
 
-### Blog
+部署步骤：
 
-Edit `posts`. Each post needs `slug`, metadata and a `content` array. Supported block types:
+1. 推送代码到 `main`。
+2. 仓库 **Settings → Pages**。
+3. **Build and deployment → Source** 选择 **GitHub Actions**。
+4. Actions 完成后访问：
 
-- `lead`
-- `p`
-- `h2`
-- `h3`
-- `quote`
-- `list` (`{ type: 'list', items: [...] }`)
-- `callout` (`{ type: 'callout', title, text }`)
-- `divider`
-
-Add a new post by copying an existing object. The list, search, next-post navigation and table of contents update automatically.
-
-### Social links / contact / FAQ
-
-Update `socials`, `contact.faqs`, `about.*`, `lab.experiments` and `footer`.
-
-> Search the codebase for `NOVA`, `novavoss` or `hello@novavoss.studio` only if you add content outside `profile.js`. The rendered UI reads from this config.
-
----
-
-## 7. GitHub Pages deployment (recommended: GitHub Actions)
-
-The included workflow is at **`.github/workflows/deploy.yml`**.
-
-1. Create a new GitHub repository.
-2. Push this folder to the `main` branch.
-3. In the repository, open **Settings → Pages**.
-4. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-5. Push to `main` (or run **Actions → Deploy to GitHub Pages → Run workflow**).
-6. Wait for the `deploy` job. The site will be available at:
-
-   `https://<username>.github.io/<repository-name>/`
-
-### Why the sub-path works
-
-- `vite.config.js` sets `base: './'`, so every built asset is referenced relatively.
-- Routing uses `HashRouter`, so links become `https://<user>.github.io/<repo>/#/about`.
-- No server rewrite, base path switching or `404.html` hack is required.
-- `public/.nojekyll` is included so GitHub Pages does not ignore Vite's asset folder naming.
-
-If you later switch to a custom domain or deploy at the repository root, the same relative config continues to work.
-
-### Alternative: gh-pages branch
-
-If you prefer not to use Actions:
-
-```bash
-npm run build
-npx gh-pages -d dist
+```text
+https://<username>.github.io/<repository-name>/
 ```
 
-Then set **Settings → Pages → Source** to **Deploy from a branch** and choose the `gh-pages` branch / root.
+当前站点：
+
+```text
+https://hu080608.github.io/Personal-website/
+```
+
+`vite.config.js` 使用 `base: './'`，路由使用 HashRouter，因此部署在仓库子路径下不会出现静态资源或路由 404。
 
 ---
 
-## 8. Quality notes
+## 8. 说明
 
-- **Responsive:** tested at 1440px, 768px and 375px with no horizontal overflow. The CSS includes additional 1180 / 1020 / 480px breakpoints.
-- **Mobile degradation:** lower Three.js particle count and DPR cap, disabled custom cursor on coarse pointers, CSS/static fallbacks for WebGL, reduced-motion media query across every animation.
-- **Cleanup:** all rAF loops, resize observers, IntersectionObservers, timeouts, pointer listeners and WebGL resources are released on unmount.
-- **Accessibility:** skip link, semantic landmarks, focus-visible states, keyboard-operable cards, modal, accordion and terminal, `aria-live` regions, reduced-motion support. `ScrambleText` exposes the final string to screen readers.
-- **Form:** front-end validation only. The success state clearly explains that no data was transmitted and offers a `mailto:` handoff.
-- **First load:** branded boot loader, lazy-loaded routes, local fonts, no large images, code-split Three.js / lab chunks.
-
----
-
-## 9. Extending the site
-
-1. **Replace the placeholder project links** with real case studies or add a `/#/projects/:slug` route to make each case study a standalone page.
-2. **Connect the contact form** to Formspree, Basin or a serverless function. The validated values are already structured in `Contact.jsx`.
-3. **Add an RSS feed** by generating `feed.xml` during the build from `profile.posts`.
-4. **Add MDX or a headless CMS** if the blog grows; the current block renderer is intentionally small and portable.
-5. **Explore WebGPU** for the particle field when browser support is broad enough.
-6. **Add real analytics and Open Graph images** before launch; the current OG tags intentionally use no external images.
-
----
-
-Built with too many gradients, an obsessive attention to easing, and a strict 60fps budget.
+- 站点为纯静态前端，联系表单只在本地校验，不会发送数据。
+- 正式反馈请使用 GitHub Issues 或仓库主页。
+- 各项目的许可证、使用方式和数据边界以其 README / LICENSE 为准。
