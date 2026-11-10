@@ -49,8 +49,8 @@ export function ProjectCard({ project, index, onOpen }) {
       onPointerLeave={onPointerLeave}
       onClick={() => onOpen(project)}
       data-cursor="view"
-      data-cursor-label="VIEW"
-      aria-label={`Open case study: ${project.title}`}
+      data-cursor-label="查看"
+      aria-label={`打开案例：${project.title}`}
     >
       <span className="project-card__border" aria-hidden="true" />
       <span className="project-card__spotlight" aria-hidden="true" />
@@ -78,7 +78,7 @@ export function ProjectCard({ project, index, onOpen }) {
             ))}
           </span>
           <span className="project-card__open">
-            OPEN FILE
+            打开档案
             <Icon name="arrow" size={15} />
           </span>
         </span>

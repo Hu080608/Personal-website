@@ -11,7 +11,7 @@ import { ScrambleText } from '../components/common/ScrambleText'
 function slugify(text) {
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/[^\p{L}\p{N}]+/gu, '-')
     .replace(/(^-|-$)/g, '')
 }
 
@@ -57,7 +57,7 @@ export default function BlogPost() {
   const post = profile.posts.find((item) => item.slug === slug)
   const [progress, setProgress] = useState(0)
   const [copied, setCopied] = useState(false)
-  useDocumentTitle(post?.title || 'Signal not found')
+  useDocumentTitle(post?.title || '未找到信号')
 
   const headings = useMemo(() => post?.content.filter((block) => block.type === 'h2') || [], [post])
   const currentIndex = profile.posts.findIndex((item) => item.slug === slug)
@@ -96,10 +96,10 @@ export default function BlogPost() {
       <div className="page post-page">
         <section className="page-hero post-missing">
           <div className="container">
-            <span className="mono-label">404 / TRANSMISSION LOST</span>
-            <h1 className="page-title">This signal has<br /><span className="text-gradient">faded out.</span></h1>
-            <p>The article you are looking for is not in the archive. It may have been moved, renamed or never existed.</p>
-            <NeonButton to="/blog" icon="arrow">Return to the log</NeonButton>
+            <span className="mono-label">404 / 传输丢失</span>
+            <h1 className="page-title">这个信号已经<br /><span className="text-gradient">消散。</span></h1>
+            <p>你寻找的文章不在档案中。它可能被移动、重命名，或者从未存在过。</p>
+            <NeonButton to="/blog" icon="arrow">返回日志</NeonButton>
           </div>
         </section>
       </div>
@@ -117,14 +117,14 @@ export default function BlogPost() {
           <div className="container">
             <div className="article-hero__top">
               <Link to="/blog" className="back-link" data-cursor="link">
-                <span>←</span> BACK TO LOG
+                <span>←</span> 返回日志
               </Link>
               <span className="mono-label">{post.category} / {post.displayDate}</span>
             </div>
             <div className="article-hero__meta">
               <span className="post-category">{post.category}</span>
               <span className="mono-label">{post.readTime}</span>
-              <span className="mono-label">BY {profile.meta.name}</span>
+              <span className="mono-label">作者 {profile.meta.name}</span>
             </div>
             <h1>{post.title}</h1>
             <p className="article-hero__subtitle">{post.subtitle}</p>
@@ -134,7 +134,7 @@ export default function BlogPost() {
               </div>
               <button type="button" className="article-share" onClick={copyLink} data-cursor="link">
                 <Icon name={copied ? 'check' : 'external'} size={15} />
-                {copied ? 'LINK COPIED' : 'COPY LINK'}
+                {copied ? '链接已复制' : '复制链接'}
               </button>
             </div>
           </div>
@@ -142,8 +142,8 @@ export default function BlogPost() {
 
         <div className="container article-layout">
           <aside className="article-toc">
-            <span className="mono-label">CONTENTS</span>
-            <nav aria-label="Article table of contents">
+            <span className="mono-label">目录</span>
+            <nav aria-label="文章目录">
               {headings.map((heading, index) => (
                 <a key={heading.text} href={`#${slugify(heading.text)}`} onClick={(event) => {
                   event.preventDefault()
@@ -155,7 +155,7 @@ export default function BlogPost() {
               ))}
             </nav>
             <div className="article-toc__meta">
-              <span className="mono-label">READING PROGRESS</span>
+              <span className="mono-label">阅读进度</span>
               <div className="article-toc__track"><span style={{ transform: `scaleX(${progress / 100})` }} /></div>
               <span>{Math.round(progress)}%</span>
             </div>
@@ -174,11 +174,11 @@ export default function BlogPost() {
             <div className="article-author glass-panel">
               <div className="article-author__mark">{profile.meta.initials}</div>
               <div>
-                <span className="mono-label">WRITTEN BY</span>
+                <span className="mono-label">作者</span>
                 <h3>{profile.meta.name}</h3>
                 <p>{profile.meta.description}</p>
                 <Link to="/about" className="text-link" data-cursor="link">
-                  About the author <Icon name="arrow" size={14} />
+                  关于作者 <Icon name="arrow" size={14} />
                 </Link>
               </div>
             </div>
@@ -188,8 +188,8 @@ export default function BlogPost() {
 
       <section className="section post-next-section">
         <div className="container">
-          <span className="mono-label">NEXT TRANSMISSION</span>
-          <Link to={`/blog/${nextPost.slug}`} className="next-post" data-cursor="link" data-cursor-label="READ">
+          <span className="mono-label">下一篇传输</span>
+          <Link to={`/blog/${nextPost.slug}`} className="next-post" data-cursor="link" data-cursor-label="阅读">
             <div>
               <span className="post-category">{nextPost.category}</span>
               <h2>{nextPost.title}</h2>
@@ -203,10 +203,10 @@ export default function BlogPost() {
       <section className="section post-cta">
         <div className="container">
           <Reveal className="post-cta__panel">
-            <span className="mono-label">END OF FILE / CHANNEL OPEN</span>
-            <h2><ScrambleText text="Have a harder question?" trigger="view" /></h2>
-            <p>I am always interested in conversations about interfaces that do not exist yet, systems that need to feel alive, and teams willing to prototype the impossible.</p>
-            <NeonButton to="/contact" icon="send">Start a conversation</NeonButton>
+            <span className="mono-label">文件结束 / 频道开放</span>
+            <h2><ScrambleText text="有更难的问题吗？" trigger="view" /></h2>
+            <p>我始终愿意聊聊那些还不存在的界面、需要生命感的系统，以及愿意把不可能做成原型的团队。</p>
+            <NeonButton to="/contact" icon="send">开始对话</NeonButton>
           </Reveal>
         </div>
       </section>

@@ -212,28 +212,28 @@ export function TelemetryChart() {
     <div className="telemetry glass-panel" ref={wrapRef}>
       <div className="telemetry__head">
         <div>
-          <span className="mono-label">SIGNAL TELEMETRY / LIVE</span>
-          <h3>Network attention field</h3>
+          <span className="mono-label">信号遥测 / 实时</span>
+          <h3>网络注意力场</h3>
         </div>
-        <span className="telemetry__live"><span className="status-dot" /> STREAMING</span>
+        <span className="telemetry__live"><span className="status-dot" /> 流式传输中</span>
       </div>
       <div className="telemetry__canvas-wrap">
-        <canvas ref={canvasRef} aria-label="Animated synthetic network telemetry chart" />
+        <canvas ref={canvasRef} aria-label="动态合成网络遥测图" />
         <div className="telemetry__axis telemetry__axis--y" aria-hidden="true">
           <span>100</span><span>75</span><span>50</span><span>25</span><span>0</span>
         </div>
         <div className="telemetry__scanline" aria-hidden="true" />
       </div>
       <div className="telemetry__stats">
-        <div><span className="mono-label">LATENCY</span><strong ref={latencyRef}>12.0 ms</strong></div>
-        <div><span className="mono-label">THROUGHPUT</span><strong ref={throughputRef}>3.10 GB/s</strong></div>
-        <div><span className="mono-label">STABILITY</span><strong ref={stabilityRef}>98.4%</strong></div>
-        <div><span className="mono-label">SAMPLE RATE</span><strong>30 fps</strong></div>
+        <div><span className="mono-label">延迟</span><strong ref={latencyRef}>12.0 ms</strong></div>
+        <div><span className="mono-label">吞吐量</span><strong ref={throughputRef}>3.10 GB/s</strong></div>
+        <div><span className="mono-label">稳定性</span><strong ref={stabilityRef}>98.4%</strong></div>
+        <div><span className="mono-label">采样率</span><strong>30 fps</strong></div>
       </div>
       <div className="telemetry__footer mono-label">
-        <span>TX: NEXUS-07</span>
-        <span>RX: LOCALHOST</span>
-        <span>PACKETS: 1,204,882</span>
+        <span>发送: NEXUS-07</span>
+        <span>接收: 本地主机</span>
+        <span>数据包: 1,204,882</span>
       </div>
     </div>
   )

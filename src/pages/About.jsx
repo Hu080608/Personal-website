@@ -14,7 +14,7 @@ import { NeonButton } from '../components/common/NeonButton'
 gsap.registerPlugin(ScrollTrigger)
 
 export default function About() {
-  useDocumentTitle('About')
+  useDocumentTitle('关于')
   const rootRef = useRef(null)
 
   useEffect(() => {
@@ -37,17 +37,17 @@ export default function About() {
       <section className="page-hero about-hero">
         <div className="container">
           <div className="page-hero__top mono-label">
-            <span>01 // ORIGIN SIGNAL</span>
+            <span>01 // 起源信号</span>
             <span>{profile.meta.coordinates}</span>
-            <span>PROFILE: ACTIVE</span>
+            <span>档案：在线</span>
           </div>
           <div className="about-hero__grid">
             <div className="about-hero__title-wrap">
               <Reveal>
-                <span className="eyebrow">HUMAN / MACHINE INTERFACE</span>
+                <span className="eyebrow">人与机器的接口</span>
                 <h1 className="page-title">
-                  A designer who <span className="text-gradient">ships.</span><br />
-                  An engineer who <span className="text-outline">dreams.</span>
+                  会<span className="text-gradient">落地</span>的设计师，<br />
+                  会<span className="text-outline">做梦</span>的工程师。
                 </h1>
               </Reveal>
             </div>
@@ -55,10 +55,10 @@ export default function About() {
               <div className="portrait-frame">
                 <div className="portrait-frame__grid" aria-hidden="true" />
                 <div className="portrait-frame__scan" aria-hidden="true" />
-                <div className="portrait-glyph" aria-hidden="true">N<span>/</span>A</div>
+                <div className="portrait-glyph" aria-hidden="true">{profile.meta.initials.slice(0, 1)}<span>/</span>{profile.meta.initials.slice(1)}</div>
                 <div className="portrait-frame__meta">
-                  <span className="mono-label">SUBJECT / {profile.meta.name}</span>
-                  <span className="mono-label">CAPTURE / {new Date().getFullYear()}</span>
+                  <span className="mono-label">对象 / {profile.meta.name}</span>
+                  <span className="mono-label">记录 / {new Date().getFullYear()}</span>
                 </div>
                 <span className="portrait-frame__cross portrait-frame__cross--tl" />
                 <span className="portrait-frame__cross portrait-frame__cross--br" />
@@ -78,8 +78,8 @@ export default function About() {
       <section className="section about-story">
         <div className="container about-story__grid">
           <Reveal className="about-story__sticky">
-            <span className="mono-label">PERSONAL LOG / 001—003</span>
-            <h2 className="display-heading">Built from curiosity,<br /><span className="text-gradient">tuned by iteration.</span></h2>
+            <span className="mono-label">个人日志 / 001—003</span>
+            <h2 className="display-heading">由好奇心构建，<br /><span className="text-gradient">在迭代中调校。</span></h2>
             <div className="about-status-list">
               {profile.about.status.map((item) => (
                 <div key={item.label}>
@@ -97,8 +97,8 @@ export default function About() {
               </Reveal>
             ))}
             <Reveal className="story-side-note glass-panel" delay={120}>
-              <span className="mono-label">PHILOSOPHY / SLASH</span>
-              <p>Design the feeling first. Then design the system that can reproduce it.</p>
+              <span className="mono-label">理念 / 斜杠</span>
+              <p>先设计感受，再设计能够复现这种感受的系统。</p>
               <span className="story-side-note__sign">— {profile.meta.initials}</span>
             </Reveal>
           </div>
@@ -109,16 +109,16 @@ export default function About() {
         <div className="container">
           <SectionHeader
             index="02"
-            eyebrow="CAPABILITY MATRIX"
-            title="T-shaped, with a deep vertical."
-            copy="The radar is not a scorecard. It is a map of where I can move fast, where I can go deep, and where I collaborate with specialists."
+            eyebrow="能力矩阵"
+            title="T 型能力，一根很深的竖线。"
+            copy="这张雷达图不是评分表，而是一张地图：我能在哪里快速移动，在哪里深挖，以及在哪里与专家协作。"
           />
           <div className="capability-layout">
             <Reveal className="capability-radar">
               <RadarChart data={profile.about.radar} />
               <div className="capability-radar__legend">
-                <span><i className="legend-dot legend-dot--cyan" />Current range</span>
-                <span><i className="legend-dot legend-dot--violet" />Growth edge</span>
+                <span><i className="legend-dot legend-dot--cyan" />当前范围</span>
+                <span><i className="legend-dot legend-dot--violet" />成长边缘</span>
               </div>
             </Reveal>
             <div className="skill-matrix">
@@ -145,9 +145,9 @@ export default function About() {
         <div className="container">
           <SectionHeader
             index="03"
-            eyebrow="TRANSMISSION HISTORY"
-            title="A timeline of useful accidents."
-            copy="Every role added a new instrument to the studio. Here is the short version of how the practice was assembled."
+            eyebrow="传输历史"
+            title="一份由有用意外组成的时间线。"
+            copy="每一段经历都为我的工作室添了一件新乐器。这是这套实践如何被组装起来的简短版本。"
           />
           <div className="timeline">
             <div className="timeline__line" aria-hidden="true" />
@@ -175,9 +175,9 @@ export default function About() {
         <div className="container">
           <SectionHeader
             index="04"
-            eyebrow="OPERATING PRINCIPLES"
-            title="Code is a material. Taste is a constraint."
-            copy="Four rules that keep ambitious work honest when the deadline gets loud."
+            eyebrow="运行原则"
+            title="代码是材料，品味是约束。"
+            copy="四条规则，让有野心的作品在截止日期逼近时仍然保持诚实。"
           />
           <div className="principles-grid">
             {profile.about.principles.map((principle, index) => (
@@ -191,13 +191,13 @@ export default function About() {
           </div>
           <Reveal className="about-now glass-panel" delay={100}>
             <div>
-              <span className="mono-label">NOW / FOCUS FIELD</span>
-              <h3><ScrambleText text="Building tools that make complex systems feel alive." trigger="view" /></h3>
+              <span className="mono-label">现在 / 关注领域</span>
+              <h3><ScrambleText text="构建让复杂系统拥有生命感的工具。" trigger="view" /></h3>
             </div>
             <p>
-              Currently prototyping a real-time brand engine, studying ambient information design, and writing a small field guide to creative engineering. Current availability: {profile.meta.availability}.
+              目前正在原型化一套实时品牌引擎，研究环境信息设计，并撰写一份关于创意工程的小型现场指南。当前状态：{profile.meta.availability}。
             </p>
-            <NeonButton to="/contact" icon="arrow">Start a conversation</NeonButton>
+            <NeonButton to="/contact" icon="arrow">开始对话</NeonButton>
           </Reveal>
         </div>
       </section>

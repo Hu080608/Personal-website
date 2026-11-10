@@ -54,15 +54,15 @@ export function Loader({ onComplete }) {
           <span className="loader__mark-text">{profile.meta.alias}</span>
         </div>
         <div className="loader__status">
-          <span>CALIBRATING OPTICAL FIELD</span>
+          <span>正在校准光学场域</span>
           <span>{String(progress).padStart(3, '0')}%</span>
         </div>
         <div className="loader__track">
           <div className="loader__fill" style={{ transform: `scaleX(${progress / 100})` }} />
         </div>
         <div className="loader__meta mono-label">
-          <span>NEURAL LINK / SECURE</span>
-          <span>BUILD 4.2.0</span>
+          <span>神经链路 / 安全</span>
+          <span>构建 4.2.0</span>
         </div>
       </div>
     </div>

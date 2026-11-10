@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 const CIPHER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!<>-_\/[]{}—=+*^?#'
-const DEFAULT_TEXT = 'THE FUTURE IS A MATERIAL WE CAN PROTOTYPE'
+const DEFAULT_TEXT = '未来是一种可以被原型化的材料'
 
 /** Interactive text decoder with a controllable interference field. */
 export function GlyphDecoder() {
@@ -59,22 +59,22 @@ export function GlyphDecoder() {
     <div className="glyph-decoder glass-panel">
       <div className="glyph-decoder__head">
         <div>
-          <span className="mono-label">GLYPH DECODER / EXP-004</span>
-          <h3>Interference engine</h3>
+          <span className="mono-label">字符解码器 / EXP-004</span>
+          <h3>干扰引擎</h3>
         </div>
         <span className={`glyph-decoder__state ${running ? 'is-running' : ''}`}>
-          {running ? 'DECODING' : 'READY'}
+          {running ? '解码中' : '就绪'}
         </span>
       </div>
 
-      <label className="glyph-decoder__label mono-label" htmlFor="glyph-source">SOURCE STRING</label>
+      <label className="glyph-decoder__label mono-label" htmlFor="glyph-source">源字符串</label>
       <input
         id="glyph-source"
         className="glyph-decoder__input"
         value={text}
         maxLength={80}
         onChange={(event) => setText(event.target.value)}
-        placeholder="Enter a transmission…"
+        placeholder="输入一段传输内容…"
       />
 
       <div className="glyph-decoder__output" aria-live="polite">
@@ -86,7 +86,7 @@ export function GlyphDecoder() {
 
       <div className="glyph-decoder__controls">
         <label htmlFor="glyph-intensity" className="glyph-decoder__range-label">
-          <span className="mono-label">INTERFERENCE</span>
+          <span className="mono-label">干扰强度</span>
           <span>{intensity}%</span>
         </label>
         <input
@@ -98,7 +98,7 @@ export function GlyphDecoder() {
           onChange={(event) => setIntensity(Number(event.target.value))}
         />
         <button type="button" className="glyph-decoder__button" onClick={decode} disabled={running} data-cursor="link">
-          {running ? 'RESOLVING…' : 'DECODE SIGNAL'}
+          {running ? '解析中…' : '解码信号'}
         </button>
       </div>
     </div>

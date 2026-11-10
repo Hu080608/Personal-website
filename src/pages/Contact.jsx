@@ -12,18 +12,18 @@ const initialForm = { name: '', email: '', company: '', budget: '', message: '',
 
 function validate(form) {
   const errors = {}
-  if (!form.name.trim()) errors.name = 'Please identify yourself.'
-  else if (form.name.trim().length < 2) errors.name = 'A name needs at least two characters.'
-  if (!form.email.trim()) errors.email = 'An email address is required.'
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email)) errors.email = 'That email address does not look valid.'
-  if (!form.message.trim()) errors.message = 'Tell me a little about the project.'
-  else if (form.message.trim().length < 24) errors.message = 'Give the signal a little more detail (24+ characters).'
-  if (!form.consent) errors.consent = 'Please confirm you are happy with the demo behaviour.'
+  if (!form.name.trim()) errors.name = '请填写你的名字。'
+  else if (form.name.trim().length < 2) errors.name = '名字至少需要两个字符。'
+  if (!form.email.trim()) errors.email = '请填写邮箱地址。'
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email)) errors.email = '这个邮箱地址看起来不太对。'
+  if (!form.message.trim()) errors.message = '简单说说你的项目吧。'
+  else if (form.message.trim().length < 24) errors.message = '请提供更多细节（至少 24 个字符）。'
+  if (!form.consent) errors.consent = '请确认你了解这个演示表单的行为。'
   return errors
 }
 
 export default function Contact() {
-  useDocumentTitle('Contact')
+  useDocumentTitle('联系')
   const [form, setForm] = useState(initialForm)
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle')
@@ -62,22 +62,22 @@ export default function Contact() {
   }
 
   const mailtoBody = encodeURIComponent(`Name: ${form.name}\nCompany: ${form.company || '—'}\nBudget: ${form.budget || '—'}\n\n${form.message}`)
-  const mailtoHref = `mailto:${profile.meta.email}?subject=${encodeURIComponent(`Project signal from ${form.name || 'the NEXUS site'}`)}&body=${mailtoBody}`
+  const mailtoHref = `mailto:${profile.meta.email}?subject=${encodeURIComponent(`来自 ${form.name || 'NEXUS 网站'} 的项目信号`)}&body=${mailtoBody}`
 
   return (
     <div className="page contact-page">
       <section className="page-hero contact-hero">
         <div className="container">
           <div className="page-hero__top mono-label">
-            <span>05 // OPEN CHANNEL</span>
-            <span>RESPONSE &lt; 48H</span>
+            <span>05 // 开放频道</span>
+            <span>48 小时内回复</span>
             <span>UTC+08:00</span>
           </div>
           <div className="contact-hero__grid">
             <Reveal>
-              <span className="eyebrow">NEW PROJECT / COLLABORATION / ADVICE</span>
+              <span className="eyebrow">新项目 / 合作 / 咨询</span>
               <h1 className="page-title">
-                Send a<br /><span className="text-gradient">signal.</span>
+                发送一个<br /><span className="text-gradient">信号。</span>
               </h1>
             </Reveal>
             <Reveal className="contact-hero__copy" delay={100}>
@@ -95,24 +95,24 @@ export default function Contact() {
         <div className="container contact-layout">
           <Reveal className="contact-form-wrap glass-panel">
             <div className="contact-form__head">
-              <span className="mono-label">ENCRYPTED MESSAGE FORM / DEMO</span>
+              <span className="mono-label">加密信息表单 / 演示</span>
               <span className={`contact-form__state ${status}`}>
-                {status === 'idle' ? 'AWAITING INPUT' : status === 'sending' ? 'TRANSMITTING…' : 'SIGNAL RECEIVED'}
+                {status === 'idle' ? '等待输入' : status === 'sending' ? '正在传输…' : '信号已接收'}
               </span>
             </div>
 
             {status === 'success' ? (
               <div className="contact-success" role="status">
                 <div className="contact-success__icon"><Icon name="check" size={30} /></div>
-                <span className="mono-label">TRANSMISSION COMPLETE</span>
-                <h2>Message received.</h2>
+                <span className="mono-label">传输完成</span>
+                <h2>信息已收到。</h2>
                 <p>
-                  This is a frontend-only demo, so nothing was sent to a server. Your details stayed in the browser. Use the mail link below to send the real thing.
+                  这是一个纯前端演示，因此没有任何内容被发送到服务器，你的信息只留在浏览器里。使用下面的邮件链接发送真实信息。
                 </p>
                 <div className="contact-success__actions">
-                  <NeonButton href={mailtoHref} icon="mail">Open mail client</NeonButton>
+                  <NeonButton href={mailtoHref} icon="mail">打开邮件客户端</NeonButton>
                   <button type="button" className="text-link" onClick={reset} data-cursor="link">
-                    Send another
+                    再写一封
                     <Icon name="arrow" size={14} />
                   </button>
                 </div>
@@ -121,20 +121,20 @@ export default function Contact() {
               <form className="contact-form" onSubmit={onSubmit} noValidate>
                 <div className="form-grid">
                   <div className={`form-field ${errors.name ? 'has-error' : ''}`}>
-                    <label htmlFor="contact-name">01 / YOUR NAME <span>*</span></label>
+                    <label htmlFor="contact-name">01 / 你的姓名 <span>*</span></label>
                     <input
                       id="contact-name"
                       value={form.name}
                       onChange={update('name')}
                       aria-invalid={Boolean(errors.name)}
                       aria-describedby={errors.name ? 'name-error' : undefined}
-                      placeholder="Ada Lovelace"
+                      placeholder="你的名字"
                       autoComplete="name"
                     />
                     {errors.name ? <span id="name-error" className="form-error">{errors.name}</span> : null}
                   </div>
                   <div className={`form-field ${errors.email ? 'has-error' : ''}`}>
-                    <label htmlFor="contact-email">02 / EMAIL ADDRESS <span>*</span></label>
+                    <label htmlFor="contact-email">02 / 邮箱地址 <span>*</span></label>
                     <input
                       id="contact-email"
                       type="email"
@@ -142,30 +142,30 @@ export default function Contact() {
                       onChange={update('email')}
                       aria-invalid={Boolean(errors.email)}
                       aria-describedby={errors.email ? 'email-error' : undefined}
-                      placeholder="you@signal.space"
+                      placeholder="you@example.com"
                       autoComplete="email"
                     />
                     {errors.email ? <span id="email-error" className="form-error">{errors.email}</span> : null}
                   </div>
                   <div className="form-field">
-                    <label htmlFor="contact-company">03 / ORGANISATION</label>
-                    <input id="contact-company" value={form.company} onChange={update('company')} placeholder="Optional" autoComplete="organization" />
+                    <label htmlFor="contact-company">03 / 机构 / 公司</label>
+                    <input id="contact-company" value={form.company} onChange={update('company')} placeholder="选填" autoComplete="organization" />
                   </div>
                   <div className="form-field">
-                    <label htmlFor="contact-budget">04 / BUDGET RANGE</label>
+                    <label htmlFor="contact-budget">04 / 预算范围</label>
                     <select id="contact-budget" value={form.budget} onChange={update('budget')}>
-                      <option value="">Select a range</option>
-                      <option value="<10k">Under $10k</option>
-                      <option value="10-25k">$10k — $25k</option>
-                      <option value="25-50k">$25k — $50k</option>
-                      <option value="50k+">$50k+</option>
-                      <option value="unsure">Still exploring</option>
+                      <option value="">请选择范围</option>
+                      <option value="<10k">低于 ¥70k</option>
+                      <option value="10-25k">¥70k — ¥180k</option>
+                      <option value="25-50k">¥180k — ¥360k</option>
+                      <option value="50k+">¥360k 以上</option>
+                      <option value="unsure">还在探索</option>
                     </select>
                   </div>
                 </div>
 
                 <div className={`form-field form-field--message ${errors.message ? 'has-error' : ''}`}>
-                  <label htmlFor="contact-message">05 / PROJECT SIGNAL <span>*</span></label>
+                  <label htmlFor="contact-message">05 / 项目信号 <span>*</span></label>
                   <textarea
                     id="contact-message"
                     value={form.message}
@@ -173,10 +173,10 @@ export default function Contact() {
                     aria-invalid={Boolean(errors.message)}
                     aria-describedby={errors.message ? 'message-error' : undefined}
                     rows="6"
-                    placeholder="What are you building, what is changing, and what does success look like?"
+                    placeholder="你在构建什么？什么正在改变？成功看起来是什么样？"
                   />
                   <div className="form-field__footer">
-                    {errors.message ? <span id="message-error" className="form-error">{errors.message}</span> : <span className="mono-label">BE AS SPECIFIC AS YOU CAN</span>}
+                    {errors.message ? <span id="message-error" className="form-error">{errors.message}</span> : <span className="mono-label">尽可能具体一点</span>}
                     <span className="mono-label">{form.message.length} / 1200</span>
                   </div>
                 </div>
@@ -184,13 +184,13 @@ export default function Contact() {
                 <label className={`form-consent ${errors.consent ? 'has-error' : ''}`}>
                   <input type="checkbox" checked={form.consent} onChange={update('consent')} aria-invalid={Boolean(errors.consent)} />
                   <span className="form-consent__box"><Icon name="check" size={12} /></span>
-                  <span>I understand this is a demo form and no data will be transmitted to a server.</span>
+                  <span>我了解这是一个演示表单，数据不会被发送到服务器。</span>
                 </label>
                 {errors.consent ? <span className="form-error form-error--consent">{errors.consent}</span> : null}
 
                 <div className="contact-form__footer">
                   <button type="submit" className="neon-button neon-button--primary" disabled={status === 'sending'} data-cursor="link">
-                    <span className="neon-button__label">{status === 'sending' ? 'TRANSMITTING…' : 'Transmit message'}</span>
+                    <span className="neon-button__label">{status === 'sending' ? '正在传输…' : '传输信息'}</span>
                     <Icon name="send" size={16} className="neon-button__icon" />
                     <span className="neon-button__shine" aria-hidden="true" />
                   </button>
@@ -202,7 +202,7 @@ export default function Contact() {
 
           <div className="contact-side">
             <Reveal className="contact-card glass-panel">
-              <span className="mono-label">DIRECT CHANNEL</span>
+              <span className="mono-label">直接频道</span>
               <a href={`mailto:${profile.meta.email}`} className="contact-card__email" data-cursor="link">
                 {profile.meta.email}
                 <Icon name="arrow" size={18} />
@@ -211,7 +211,7 @@ export default function Contact() {
             </Reveal>
 
             <Reveal className="contact-card glass-panel" delay={80}>
-              <span className="mono-label">SOCIAL FREQUENCIES</span>
+              <span className="mono-label">社交频率</span>
               <div className="contact-socials">
                 {profile.socials.map((social) => (
                   <a key={social.label} href={social.url} target="_blank" rel="noreferrer" data-cursor="link">
@@ -227,19 +227,19 @@ export default function Contact() {
 
             <Reveal className="contact-card contact-card--meta glass-panel" delay={140}>
               <div>
-                <span className="mono-label">LOCATION</span>
+                <span className="mono-label">所在地</span>
                 <strong>{profile.meta.location}</strong>
               </div>
               <div>
-                <span className="mono-label">TIMEZONE</span>
+                <span className="mono-label">时区</span>
                 <strong>{profile.meta.timezone}</strong>
               </div>
               <div>
-                <span className="mono-label">COORDINATES</span>
+                <span className="mono-label">坐标</span>
                 <strong>{profile.meta.coordinates}</strong>
               </div>
               <div>
-                <span className="mono-label">LOCAL TIME</span>
+                <span className="mono-label">本地时间</span>
                 <strong>{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</strong>
               </div>
             </Reveal>
@@ -251,15 +251,15 @@ export default function Contact() {
         <div className="container">
           <div className="availability-grid">
             <Reveal className="availability-intro">
-              <span className="mono-label">AVAILABILITY / OPEN CHANNEL</span>
-              <h2 className="display-heading">Good projects start<br />with a <span className="text-gradient">clear signal.</span></h2>
+              <span className="mono-label">可用状态 / 开放频道</span>
+              <h2 className="display-heading">好的项目始于<br />一个<span className="text-gradient">清晰信号。</span></h2>
             </Reveal>
             <Reveal className="availability-list" delay={100}>
               {[
-                ['Immersive launches', 'Brand worlds, product reveals and event microsites that need to feel impossible in a browser.'],
-                ['Spatial interfaces', 'Prototypes and production systems for spatial, ambient or multi-surface products.'],
-                ['Design engineering', 'Embedded support for teams translating a bold art direction into a resilient front-end system.'],
-                ['Advisory sessions', 'A focused 90-minute review of a concept, prototype or performance bottleneck.'],
+                ['沉浸式发布', '品牌世界、产品揭幕与活动微站——那些需要在浏览器里显得“不可能”的体验。'],
+                ['空间界面', '为空间、环境或多终端产品构建原型与生产系统。'],
+                ['设计工程', '嵌入团队，把大胆的艺术方向翻译成有韧性的前端系统。'],
+                ['顾问会议', '用 90 分钟集中审视一个概念、原型或性能瓶颈。'],
               ].map(([title, copy], index) => (
                 <div key={title} className="availability-item">
                   <span className="mono-label">0{index + 1}</span>
@@ -276,9 +276,9 @@ export default function Contact() {
         <div className="container faq-layout">
           <SectionHeader
             index="04"
-            eyebrow="FREQUENTLY ASKED"
-            title="Before you open the channel."
-            copy="A few answers that save us both a round trip. If your question is not here, it is probably a good one."
+            eyebrow="常见问题"
+            title="在打开频道之前。"
+            copy="一些能帮我们省去来回沟通的回答。如果你的问题不在这里，那大概是个好问题。"
           />
           <div className="faq-list">
             {profile.contact.faqs.map((faq, index) => {
@@ -311,11 +311,11 @@ export default function Contact() {
       <section className="section contact-last">
         <div className="container contact-last__inner">
           <Reveal>
-            <span className="mono-label">NO BRIEF? NO PROBLEM.</span>
-            <h2><ScrambleText text="The best conversations start before the brief exists." trigger="view" /></h2>
+            <span className="mono-label">没有需求书？没关系。</span>
+            <h2><ScrambleText text="最好的对话，往往始于需求书出现之前。" trigger="view" /></h2>
           </Reveal>
           <Reveal delay={100}>
-            <NeonButton href={`mailto:${profile.meta.email}`} icon="mail">Email the studio</NeonButton>
+            <NeonButton href={`mailto:${profile.meta.email}`} icon="mail">给工作室发邮件</NeonButton>
           </Reveal>
         </div>
       </section>

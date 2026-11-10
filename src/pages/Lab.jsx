@@ -15,23 +15,23 @@ import { ScrambleText } from '../components/common/ScrambleText'
 const labNotes = [
   {
     index: '01',
-    title: 'Everything is a material study',
-    text: 'A shader, a transition curve and a type scale are all decisions about how something responds. I treat them as one continuous material system.',
+    title: '一切都是一次材料研究',
+    text: '一个 Shader、一条转场曲线和一套字号比例，都是关于“事物如何回应”的决定。我把它们视为同一套连续的材料系统。',
   },
   {
     index: '02',
-    title: 'The fallback is part of the design',
-    text: 'Every effect on this page has a static or reduced-motion equivalent. Mobile users get fewer particles and lower pixel ratios — not a broken experience.',
+    title: '降级方案也是设计的一部分',
+    text: '这个页面上的每个效果都有静态或减少动效版本。移动端用户会获得更少粒子和更低像素比，而不是一个坏掉的体验。',
   },
   {
     index: '03',
-    title: 'Motion needs a reason to stop',
-    text: 'Ambient effects are held on a tight leash. If a visual does not explain state, support hierarchy or create atmosphere, it gets cut.',
+    title: '动效需要一个停下来的理由',
+    text: '环境效果被严格约束。如果一个视觉不能解释状态、支撑层级或营造氛围，它就会被删掉。',
   },
 ]
 
 export default function Lab() {
-  useDocumentTitle('Lab')
+  useDocumentTitle('实验室')
   const [activeExperiment, setActiveExperiment] = useState('shader')
 
   const jumpTo = (id) => {
@@ -44,23 +44,23 @@ export default function Lab() {
       <section className="page-hero lab-hero">
         <div className="container">
           <div className="page-hero__top mono-label">
-            <span>03 // EXPERIMENTAL DIVISION</span>
-            <span>4 ACTIVE MODULES</span>
-            <span>SAFE TO EXPLORE</span>
+            <span>03 // 实验分部</span>
+            <span>4 个活跃模块</span>
+            <span>可安全探索</span>
           </div>
           <div className="lab-hero__grid">
             <Reveal>
-              <span className="eyebrow">SANDBOX / NO PRODUCTION CODE</span>
+              <span className="eyebrow">沙盒 / 无生产代码</span>
               <h1 className="page-title">
-                The <span className="text-gradient">lab</span> is<br />always open.
+                <span className="text-gradient">实验室</span><br />永远开放。
               </h1>
             </Reveal>
             <Reveal className="lab-hero__copy" delay={110}>
               <p className="lead-copy">
-                A working surface for experiments in shaders, text, sound and data. No slides, no mockups. Everything here is running in your browser right now.
+                一块用于 Shader、文字、声音与数据实验的工作台。没有幻灯片，没有静态稿。这里的一切，此刻都在你的浏览器里运行。
               </p>
               <p>
-                These modules are also the building blocks of client work: a shader becomes a brand world, a terminal becomes an onboarding flow, a waveform becomes a real-time product signal.
+                这些模块也是客户项目的积木：一个 Shader 可以变成品牌世界，一个终端可以变成引导流程，一条波形可以变成实时产品信号。
               </p>
             </Reveal>
           </div>
@@ -73,7 +73,7 @@ export default function Lab() {
                   className={`experiment-card ${activeExperiment === experiment.id ? 'is-active' : ''}`}
                   onClick={() => jumpTo(experiment.id)}
                   data-cursor="link"
-                  data-cursor-label="ENTER"
+                  data-cursor-label="进入"
                 >
                   <span className="experiment-card__code">{experiment.code}</span>
                   <span className="experiment-card__title">{experiment.title}</span>
@@ -91,21 +91,21 @@ export default function Lab() {
           <div className="lab-module__head">
             <SectionHeader
               index="EXP-001"
-              eyebrow="FRAGMENT CORE"
-              title="Paint with light."
-              copy="A live WebGL fragment shader with three procedural atmospheres. Move your cursor across the field, switch modes, and pull the intensity down to see the structure underneath."
+              eyebrow="片元核心"
+              title="用光作画。"
+              copy="一个实时 WebGL 片元着色器，内置三种程序化氛围。移动鼠标穿过场域，切换模式，拉低强度，看看下面的结构。"
             />
             <div className="lab-module__tags">
-              <span>GLSL</span><span>WEBGL 1.0</span><span>60FPS TARGET</span>
+              <span>GLSL</span><span>WEBGL 1.0</span><span>60FPS 目标</span>
             </div>
           </div>
           <Reveal>
             <ShaderLab />
           </Reveal>
           <div className="module-notes">
-            <div><span className="mono-label">INPUT</span><p>Pointer position is smoothed into a damped uniform, so the field bends rather than snaps.</p></div>
-            <div><span className="mono-label">PERFORMANCE</span><p>One fullscreen triangle pair, no textures. DPR capped at 1.5 to protect integrated GPUs.</p></div>
-            <div><span className="mono-label">FALLBACK</span><p>If WebGL is unavailable, the panel swaps to a CSS atmosphere with the same palette.</p></div>
+            <div><span className="mono-label">输入</span><p>指针位置被平滑成带阻尼的 uniform，因此场域会弯曲，而不是瞬间跳变。</p></div>
+            <div><span className="mono-label">性能</span><p>一对全屏三角形，无纹理采样。DPR 上限 1.5，以保护集成显卡。</p></div>
+            <div><span className="mono-label">降级</span><p>如果 WebGL 不可用，面板会切换为使用同一色板的 CSS 氛围背景。</p></div>
           </div>
         </div>
       </section>
@@ -116,25 +116,25 @@ export default function Lab() {
             <div>
               <SectionHeader
                 index="EXP-002"
-                eyebrow="GHOST TERMINAL"
-                title="Talk to the machine."
-                copy="A simulated local shell with a working command set. Type `help` to list commands, or try `whoami`, `projects`, `skills` and `matrix`."
+                eyebrow="幽灵终端"
+                title="和机器说说话。"
+                copy="一个带可用命令集的模拟本地 Shell。输入 `help` 查看命令，也可以试试 `whoami`、`projects`、`skills` 和 `matrix`。"
               />
               <Reveal delay={90}>
                 <TerminalLab />
               </Reveal>
             </div>
             <div id="telemetry" className="lab-split__side">
-              <span className="mono-label">{profile.lab.experiments[2].code} / LIVE SIGNAL</span>
+              <span className="mono-label">{profile.lab.experiments[2].code} / 实时信号</span>
               <Reveal delay={110}>
                 <TelemetryChart />
               </Reveal>
               <Reveal className="telemetry-note glass-panel" delay={160}>
-                <span className="mono-label">READOUT</span>
+                <span className="mono-label">读数</span>
                 <p>
-                  Synthetic network data drives the waveform, bars and HUD. The canvas runs at 30fps and pauses its HUD updates whenever the tab is hidden by the browser.
+                  合成网络数据驱动波形、柱状图与 HUD。画布以 30fps 运行，当浏览器标签页隐藏时会暂停 HUD 更新。
                 </p>
-                <NeonButton href="#/contact" variant="ghost" icon="arrow">Discuss a data piece</NeonButton>
+                <NeonButton href="#/contact" variant="ghost" icon="arrow">聊聊数据作品</NeonButton>
               </Reveal>
             </div>
           </div>
@@ -146,12 +146,12 @@ export default function Lab() {
           <div className="lab-module__head">
             <SectionHeader
               index="EXP-004"
-              eyebrow="GLYPH DECODER"
-              title="Unmake language."
-              copy="Type a phrase, choose the interference level and watch the cipher resolve. This is the same scramble system used for the site’s section labels."
+              eyebrow="字符解码器"
+              title="拆解语言。"
+              copy="输入一句话，选择干扰强度，观察密文逐渐解析。这也是本站章节标签使用的同一套乱码系统。"
             />
             <div className="lab-module__tags">
-              <span>STRING OPS</span><span>SET TIMEOUT</span><span>ACCESSIBLE OUTPUT</span>
+              <span>字符串操作</span><span>定时器</span><span>无障碍输出</span>
             </div>
           </div>
           <Reveal>
@@ -164,9 +164,9 @@ export default function Lab() {
         <div className="container">
           <SectionHeader
             index="05"
-            eyebrow="LAB PROTOCOL"
-            title="How the experiments stay honest."
-            copy="Three rules that keep Playground energy from turning into production debt."
+            eyebrow="实验室协议"
+            title="实验如何保持诚实。"
+            copy="三条规则，避免“游乐场能量”变成生产债务。"
           />
           <div className="lab-notes">
             {labNotes.map((note, index) => (
@@ -179,13 +179,13 @@ export default function Lab() {
           </div>
           <Reveal className="lab-footer glass-panel" delay={100}>
             <div>
-              <span className="mono-label">OPEN SOURCE / SOON</span>
-              <h3><ScrambleText text="These experiments want to become tools." trigger="view" /></h3>
+              <span className="mono-label">即将开源</span>
+              <h3><ScrambleText text="这些实验想成为真正的工具。" trigger="view" /></h3>
             </div>
             <p>
-              I am extracting the reusable parts of this lab into a small open toolkit: motion primitives, shader helpers and a screen-reader-safe text scrambler. Join the channel if you want early access.
+              我正在把实验室里可复用的部分抽成一套小型开源工具包：动效原语、Shader 辅助函数，以及可由屏幕阅读器安全读取的文字乱码器。想提前体验，欢迎联系。
             </p>
-            <NeonButton to="/contact" icon="send">Request access</NeonButton>
+            <NeonButton to="/contact" icon="send">申请访问</NeonButton>
           </Reveal>
         </div>
       </section>

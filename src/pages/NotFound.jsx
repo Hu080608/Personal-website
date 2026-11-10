@@ -7,7 +7,7 @@ import { ScrambleText } from '../components/common/ScrambleText'
 import { Icon } from '../components/common/Icon'
 
 export default function NotFound() {
-  useDocumentTitle('Signal lost — 404')
+  useDocumentTitle('信号丢失 — 404')
 
   return (
     <div className="page not-found-page">
@@ -16,35 +16,35 @@ export default function NotFound() {
         <div className="not-found__scan" aria-hidden="true" />
         <div className="container not-found__inner">
           <div className="not-found__top mono-label">
-            <span>ERROR / ROUTE NOT FOUND</span>
-            <span>NODE: {profile.meta.alias}</span>
-            <span>PACKET LOST</span>
+            <span>错误 / 未找到路由</span>
+            <span>节点：{profile.meta.alias}</span>
+            <span>数据包丢失</span>
           </div>
 
-          <div className="not-found__code" aria-label="Error 404">
+          <div className="not-found__code" aria-label="错误 404">
             <GlitchText text="404" as="span" className="not-found__number" />
           </div>
 
           <div className="not-found__content">
-            <span className="eyebrow">SIGNAL DECAY / NO ROUTE HOME</span>
-            <h1>This dimension<br />does not <span className="text-gradient">exist.</span></h1>
+            <span className="eyebrow">信号衰减 / 无路可归</span>
+            <h1>这个维度<br />并不<span className="text-gradient">存在。</span></h1>
             <p>
-              The path you followed has collapsed into static. It may have been moved, renamed, or it may be waiting in a future release. The rest of the archive is still online.
+              你跟随的路径已经坍缩成雪花噪点。它可能被移动、重命名，或者正在未来某个版本里等待。档案的其余部分仍然在线。
             </p>
             <div className="not-found__actions">
-              <NeonButton to="/" icon="arrow">Return to home</NeonButton>
-              <NeonButton to="/projects" variant="ghost" icon="cube">Browse case files</NeonButton>
+              <NeonButton to="/" icon="arrow">返回首页</NeonButton>
+              <NeonButton to="/projects" variant="ghost" icon="cube">浏览作品档案</NeonButton>
             </div>
           </div>
 
           <div className="not-found__diagnostics glass-panel">
             <div className="not-found__diag-head">
-              <span className="mono-label">DIAGNOSTIC READOUT</span>
-              <span className="not-found__diag-status"><i /> CRITICAL</span>
+              <span className="mono-label">诊断读数</span>
+              <span className="not-found__diag-status"><i /> 严重</span>
             </div>
-            <div className="diagnostic-line"><span>REQUEST</span><span className="mono-label">{typeof window !== 'undefined' ? window.location.hash : '#/unknown'}</span></div>
-            <div className="diagnostic-line"><span>RESPONSE</span><span className="mono-label">404 / NO CONTENT</span></div>
-            <div className="diagnostic-line"><span>SUGGESTION</span><span className="mono-label">TRY /#/ OR /#/PROJECTS</span></div>
+            <div className="diagnostic-line"><span>请求</span><span className="mono-label">{typeof window !== 'undefined' ? window.location.hash : '#/unknown'}</span></div>
+            <div className="diagnostic-line"><span>响应</span><span className="mono-label">404 / 无内容</span></div>
+            <div className="diagnostic-line"><span>建议</span><span className="mono-label">尝试 /#/ 或 /#/PROJECTS</span></div>
             <div className="not-found__wave" aria-hidden="true">
               {Array.from({ length: 38 }).map((_, index) => (
                 <span key={index} style={{ '--i': index }} />
@@ -53,14 +53,14 @@ export default function NotFound() {
           </div>
 
           <div className="not-found__quick-links">
-            <span className="mono-label">QUICK ROUTES</span>
+            <span className="mono-label">快速路由</span>
             {[
-              ['Home', '/'],
-              ['About', '/about'],
-              ['Projects', '/projects'],
-              ['Lab', '/lab'],
-              ['Log', '/blog'],
-              ['Contact', '/contact'],
+              ['首页', '/'],
+              ['关于', '/about'],
+              ['作品', '/projects'],
+              ['实验室', '/lab'],
+              ['日志', '/blog'],
+              ['联系', '/contact'],
             ].map(([label, to]) => (
               <Link key={to} to={to} data-cursor="link">
                 {label}
@@ -70,7 +70,7 @@ export default function NotFound() {
           </div>
 
           <span className="not-found__footer mono-label">
-            <ScrambleText text="THE SYSTEM REMAINS ONLINE" trigger="mount" />
+            <ScrambleText text="系统仍然在线" trigger="mount" />
           </span>
         </div>
       </section>

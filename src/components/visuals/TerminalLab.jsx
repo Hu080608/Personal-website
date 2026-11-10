@@ -2,21 +2,21 @@ import { useEffect, useRef, useState } from 'react'
 import { profile } from '../../config/profile'
 
 const bootLines = [
-  { type: 'system', text: 'NEXUS//SHELL v4.2.0 — secure local session' },
-  { type: 'muted', text: 'Connection established. Type `help` for available commands.' },
-  { type: 'muted', text: 'No network access. All data is packaged in your browser.' },
+  { type: 'system', text: 'NEXUS//SHELL v4.2.0 — 安全本地会话' },
+  { type: 'muted', text: '连接已建立。输入 `help` 查看可用命令。' },
+  { type: 'muted', text: '无网络访问。所有数据都打包在你的浏览器中。' },
 ]
 
 const commandHelp = [
-  ['help', 'List every available command'],
-  ['whoami', 'Print operator identity'],
-  ['skills', 'Read the active capability stack'],
-  ['projects', 'List transmitted case files'],
-  ['contact', 'Open a direct channel'],
-  ['matrix', 'Request a diagnostic rain sample'],
-  ['date', 'Read local system time'],
-  ['sudo', 'Attempt elevated access'],
-  ['clear', 'Clear the terminal buffer'],
+  ['help', '列出所有可用命令'],
+  ['whoami', '输出操作者身份'],
+  ['skills', '读取当前能力栈'],
+  ['projects', '列出传输档案'],
+  ['contact', '打开直接联系频道'],
+  ['matrix', '请求一段诊断数据雨'],
+  ['date', '读取本地系统时间'],
+  ['sudo', '尝试提升权限'],
+  ['clear', '清空终端缓冲区'],
 ]
 
 /** A self-contained command console. All commands run locally in React state. */
@@ -51,7 +51,7 @@ export function TerminalLab() {
 
     switch (command) {
       case 'help':
-        response.push({ type: 'success', text: 'COMMAND INDEX' })
+        response.push({ type: 'success', text: '命令索引' })
         commandHelp.forEach(([cmd, description]) => {
           response.push({ type: 'row', command: cmd, text: description })
         })
@@ -62,46 +62,46 @@ export function TerminalLab() {
         response.push({ type: 'muted', text: profile.meta.tagline })
         break
       case 'skills':
-        response.push({ type: 'success', text: 'ACTIVE MODULES' })
+        response.push({ type: 'success', text: '活跃模块' })
         profile.about.skillGroups.forEach((group) => {
           response.push({ type: 'muted', text: `› ${group.title}: ${group.items.join(' · ')}` })
         })
         break
       case 'projects':
-        response.push({ type: 'success', text: 'CASE FILE INDEX' })
+        response.push({ type: 'success', text: '案例档案索引' })
         profile.projects.forEach((project, index) => {
           response.push({ type: 'muted', text: `${String(index + 1).padStart(2, '0')}  ${project.title} — ${project.category} / ${project.year}` })
         })
         break
       case 'contact':
-        response.push({ type: 'success', text: 'DIRECT CHANNEL' })
-        response.push({ type: 'muted', text: `MAIL  ${profile.meta.email}` })
-        response.push({ type: 'muted', text: `SITE  #/contact` })
+        response.push({ type: 'success', text: '直接频道' })
+        response.push({ type: 'muted', text: `邮箱  ${profile.meta.email}` })
+        response.push({ type: 'muted', text: `站点  #/contact` })
         break
       case 'date':
-        response.push({ type: 'muted', text: `LOCAL TIME  ${new Date().toLocaleString()}` })
-        response.push({ type: 'muted', text: `TIMEZONE    ${profile.meta.timezone}` })
+        response.push({ type: 'muted', text: `本地时间  ${new Date().toLocaleString()}` })
+        response.push({ type: 'muted', text: `时区      ${profile.meta.timezone}` })
         break
       case 'matrix':
-        response.push({ type: 'success', text: 'DIAGNOSTIC RAIN' })
+        response.push({ type: 'success', text: '诊断数据雨' })
         for (let i = 0; i < 6; i += 1) {
           response.push({
             type: 'matrix',
             text: Array.from({ length: 36 }, () => (Math.random() > 0.48 ? '1' : '0')).join(' '),
           })
         }
-        response.push({ type: 'muted', text: 'No anomalies detected. Reality remains nominally stable.' })
+        response.push({ type: 'muted', text: '未检测到异常。现实在名义上保持稳定。' })
         break
       case 'sudo':
-        response.push({ type: 'error', text: 'PERMISSION DENIED: this console is already inside the simulation.' })
+        response.push({ type: 'error', text: '权限拒绝：这个控制台本来就在模拟内部。' })
         break
       case 'rm':
       case 'rm -rf /':
-        response.push({ type: 'error', text: 'A bold move. Access denied, and noted in your permanent record.' })
+        response.push({ type: 'error', text: '大胆的举动。访问被拒绝，并已记入你的永久档案。' })
         break
       default:
-        response.push({ type: 'error', text: `Command not found: ${command}` })
-        response.push({ type: 'muted', text: 'Type `help` to list the local command set.' })
+        response.push({ type: 'error', text: `未找到命令：${command}` })
+        response.push({ type: 'muted', text: '输入 `help` 查看本地命令集。' })
     }
 
     push([...prompt, ...response])
@@ -139,8 +139,8 @@ export function TerminalLab() {
     <div className="terminal-lab glass-panel" onClick={() => inputRef.current?.focus()}>
       <div className="terminal-lab__chrome">
         <span className="terminal-dots" aria-hidden="true"><i /><i /><i /></span>
-        <span className="mono-label">ghost-terminal / local</span>
-        <span className="terminal-lab__secure"><span className="status-dot" /> ENCRYPTED</span>
+        <span className="mono-label">ghost-terminal / 本地</span>
+        <span className="terminal-lab__secure"><span className="status-dot" /> 已加密</span>
       </div>
       <div className="terminal-lab__body" ref={bodyRef} aria-live="polite">
         {lines.map((line, index) => {
@@ -170,8 +170,8 @@ export function TerminalLab() {
           onKeyDown={onKeyDown}
           autoComplete="off"
           spellCheck="false"
-          placeholder="type help…"
-          aria-label="Terminal command"
+          placeholder="输入 help…"
+          aria-label="终端命令"
         />
         <span className="terminal-lab__caret" aria-hidden="true" />
       </form>

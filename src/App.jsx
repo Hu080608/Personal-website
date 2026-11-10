@@ -24,7 +24,7 @@ function RouteFallback() {
   return (
     <div className="route-fallback" role="status" aria-live="polite">
       <span className="route-fallback__mark" />
-      <span className="mono-label">DECODING ROUTE…</span>
+      <span className="mono-label">正在解码路由…</span>
     </div>
   )
 }
@@ -76,7 +76,7 @@ export default function App() {
       <AmbientBackdrop />
       <CustomCursor />
       {!booted ? <Loader onComplete={() => setBooted(true)} /> : null}
-      <a href="#main" className="skip-link">Skip to content</a>
+      <a href="#main" className="skip-link">跳到主要内容</a>
       <Navbar />
       <main id="main" className="site-main">
         <AnimatedRoutes />

@@ -4,12 +4,12 @@ import { profile } from '../../config/profile'
 import { Icon } from '../common/Icon'
 
 const links = [
-  { to: '/', label: 'Home', index: '00' },
-  { to: '/about', label: 'About', index: '01' },
-  { to: '/projects', label: 'Projects', index: '02' },
-  { to: '/lab', label: 'Lab', index: '03' },
-  { to: '/blog', label: 'Log', index: '04' },
-  { to: '/contact', label: 'Contact', index: '05' },
+  { to: '/', label: '首页', index: '00' },
+  { to: '/about', label: '关于', index: '01' },
+  { to: '/projects', label: '作品', index: '02' },
+  { to: '/lab', label: '实验室', index: '03' },
+  { to: '/blog', label: '日志', index: '04' },
+  { to: '/contact', label: '联系', index: '05' },
 ]
 
 export function Navbar() {
@@ -55,7 +55,7 @@ export function Navbar() {
             </span>
             <span className="brand__status" title="System online">
               <span className="status-dot" />
-              ONLINE
+              在线
             </span>
           </Link>
 
@@ -75,8 +75,8 @@ export function Navbar() {
           </nav>
 
           <div className="site-header__actions">
-            <Link to="/contact" className="header-cta" data-cursor="link" data-cursor-label="TALK">
-              <span>Start a project</span>
+            <Link to="/contact" className="header-cta" data-cursor="link" data-cursor-label="联系">
+              <span>发起项目</span>
               <Icon name="arrow" size={14} />
             </Link>
             <button
@@ -100,7 +100,7 @@ export function Navbar() {
         <div className="mobile-menu__backdrop" onClick={() => setOpen(false)} />
         <div className="mobile-menu__panel">
           <div className="mobile-menu__top mono-label">
-            <span>NAVIGATION / {profile.meta.alias}</span>
+            <span>导航 / {profile.meta.alias}</span>
             <span>{profile.meta.coordinates}</span>
           </div>
           <nav className="mobile-menu__nav" aria-label="Mobile navigation">

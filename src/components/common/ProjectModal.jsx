@@ -49,16 +49,16 @@ export function ProjectModal({ project, onClose }) {
         aria-labelledby="project-modal-title"
       >
         <div className="project-modal__topbar">
-          <span className="mono-label">CASE FILE / {project.slug.toUpperCase()}</span>
+          <span className="mono-label">案例档案 / {project.slug.toUpperCase()}</span>
           <button
             ref={closeRef}
             type="button"
             className="project-modal__close"
             onClick={onClose}
-            aria-label="Close case study"
+            aria-label="关闭案例"
             data-cursor="link"
           >
-            <span>CLOSE</span>
+            <span>关闭</span>
             <Icon name="close" size={18} />
           </button>
         </div>
@@ -92,20 +92,20 @@ export function ProjectModal({ project, onClose }) {
 
         <div className="project-modal__body">
           <div className="project-modal__copy">
-            <h3>The brief</h3>
+            <h3>项目背景</h3>
             <p>{project.description}</p>
-            <h3>The friction</h3>
+            <h3>核心挑战</h3>
             <p>{project.challenge}</p>
-            <h3>The signal</h3>
+            <h3>结果信号</h3>
             <p>{project.outcome}</p>
           </div>
           <aside className="project-modal__aside">
             <div>
-              <h4 className="mono-label">ROLE</h4>
+              <h4 className="mono-label">角色</h4>
               <p>{project.role}</p>
             </div>
             <div>
-              <h4 className="mono-label">SYSTEMS</h4>
+              <h4 className="mono-label">技术栈</h4>
               <ul className="tag-list">
                 {project.stack.map((item) => (
                   <li key={item}>{item}</li>
@@ -113,7 +113,7 @@ export function ProjectModal({ project, onClose }) {
               </ul>
             </div>
             <div>
-              <h4 className="mono-label">CAPABILITIES</h4>
+              <h4 className="mono-label">能力</h4>
               <ul className="feature-list">
                 {project.features.map((feature) => (
                   <li key={feature}>

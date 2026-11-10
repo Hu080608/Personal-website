@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { Icon } from '../common/Icon'
 
 const MODES = [
-  { id: 0, name: 'AETHER', note: 'plasma field' },
-  { id: 1, name: 'WARP', note: 'polar drift' },
-  { id: 2, name: 'GRID', note: 'signal mesh' },
+  { id: 0, name: 'AETHER', note: '等离子场' },
+  { id: 1, name: 'WARP', note: '极坐标漂移' },
+  { id: 2, name: 'GRID', note: '信号网格' },
 ]
 
 const VERTEX_SHADER = `
@@ -246,22 +246,22 @@ export function ShaderLab() {
   return (
     <div className="shader-lab glass-panel">
       <div className="shader-lab__stage" ref={wrapRef}>
-        <canvas ref={canvasRef} className="shader-lab__canvas" aria-label="Interactive WebGL fragment shader artwork" />
+        <canvas ref={canvasRef} className="shader-lab__canvas" aria-label="可交互 WebGL 片元着色器作品" />
         {failed ? <div className="shader-lab__fallback" /> : null}
         <div className="shader-lab__overlay">
           <div className="shader-lab__hud shader-lab__hud--tl">
-            <span>EXP-001 / FRAGMENT CORE</span>
-            <span>MODE: {MODES[mode].name}</span>
+            <span>EXP-001 / 片元核心</span>
+            <span>模式：{MODES[mode].name}</span>
           </div>
           <div className="shader-lab__hud shader-lab__hud--tr">
-            <span>RES: AUTO</span>
+            <span>分辨率：自动</span>
             <span>GL: WEBGL1</span>
           </div>
           <div className="shader-lab__reticle" aria-hidden="true">
             <span /><span /><span /><span />
           </div>
           <div className="shader-lab__hud shader-lab__hud--bl">
-            <span>MOVE CURSOR TO BEND FIELD</span>
+            <span>移动鼠标，弯曲场域</span>
             <span>u_time ▲</span>
           </div>
           <div className="shader-lab__corner shader-lab__corner--a" aria-hidden="true" />
@@ -270,7 +270,7 @@ export function ShaderLab() {
       </div>
 
       <div className="shader-lab__controls">
-        <div className="shader-lab__modes" role="group" aria-label="Shader mode">
+        <div className="shader-lab__modes" role="group" aria-label="着色器模式">
           {MODES.map((item) => (
             <button
               key={item.id}
@@ -287,7 +287,7 @@ export function ShaderLab() {
         </div>
         <div className="shader-lab__sliders">
           <label htmlFor="shader-intensity">
-            <span className="mono-label">FIELD INTENSITY <b>{intensity}%</b></span>
+            <span className="mono-label">场域强度 <b>{intensity}%</b></span>
             <input
               id="shader-intensity"
               type="range"
@@ -299,7 +299,7 @@ export function ShaderLab() {
           </label>
           <button type="button" className="shader-play" onClick={() => setPaused((value) => !value)} data-cursor="link">
             <Icon name={paused ? 'play' : 'pause'} size={15} />
-            {paused ? 'RESUME' : 'PAUSE'}
+            {paused ? '继续' : '暂停'}
           </button>
         </div>
       </div>

@@ -13,28 +13,28 @@ import { Icon } from '../components/common/Icon'
 const processSteps = [
   {
     index: '01',
-    title: 'Locate the signal',
-    text: 'A short, intense discovery sprint to find the one idea the project must make undeniable. We map audience, constraints, references and the technical unknown.',
+    title: '定位信号',
+    text: '一次短促而高强度的探索冲刺，找到项目必须讲清楚的唯一核心。我们共同梳理受众、约束、参考与技术未知。',
   },
   {
     index: '02',
-    title: 'Prototype the impossible',
-    text: 'The riskiest assumption gets built first. A shader test, a motion study, a live data feed: something real enough to argue with, early enough to change the direction.',
+    title: '原型化不可能',
+    text: '最危险的假设会最先被做出来。一个 Shader 测试、一段动效研究、一条实时数据流：它要真实到可以被争论，又足够早，能够改变方向。',
   },
   {
     index: '03',
-    title: 'Build the system',
-    text: 'The prototype becomes a design system and an engineering plan. Tokens, components, performance budgets and accessibility rules are defined together.',
+    title: '构建系统',
+    text: '原型会变成设计系统与工程计划。令牌、组件、性能预算与无障碍规则，从一开始就一起定义。',
   },
   {
     index: '04',
-    title: 'Tune the launch',
-    text: 'The last 10% is where the magic lives. We profile, degrade gracefully, write documentation and make sure the work still feels alive after handoff.',
+    title: '调校上线',
+    text: '最后 10% 才是魔法所在。我们做性能分析、优雅降级、写文档，并确保作品在交接之后依然有生命感。',
   },
 ]
 
 export default function Projects() {
-  useDocumentTitle('Projects')
+  useDocumentTitle('作品')
   const [filter, setFilter] = useState('All')
   const [activeProject, setActiveProject] = useState(null)
 
@@ -46,27 +46,27 @@ export default function Projects() {
       <section className="page-hero projects-hero">
         <div className="container">
           <div className="page-hero__top mono-label">
-            <span>02 // WORK ARCHIVE</span>
-            <span>{profile.projects.length} CASE FILES</span>
-            <span>STATUS: DECLASSIFIED</span>
+            <span>02 // 作品档案</span>
+            <span>{profile.projects.length} 个案例</span>
+            <span>状态：已解密</span>
           </div>
           <div className="projects-hero__grid">
             <Reveal>
-              <span className="eyebrow">SELECTED TRANSMISSIONS</span>
+              <span className="eyebrow">精选传输</span>
               <h1 className="page-title">
-                Work with a<br /><span className="text-gradient">pulse.</span>
+                创造有<br /><span className="text-gradient">脉搏</span>的作品。
               </h1>
             </Reveal>
             <Reveal className="projects-hero__copy" delay={120}>
               <p className="lead-copy">
-                Brand worlds, spatial interfaces and real-time systems for people who believe the browser is still the most interesting canvas ever built.
+                为那些仍然相信浏览器是世界上最有趣画布的人，构建品牌世界、空间界面与实时系统。
               </p>
               <p>
-                Every case file below began with a version of the same question: how do we make something complex feel immediate? Open any card for the brief, the friction and the measurable signal.
+                下面每一个案例都始于同一个问题的变体：如何让复杂的东西感觉即刻可懂？打开任意卡片，查看项目背景、核心挑战与可量化的结果。
               </p>
               <div className="projects-hero__hint">
                 <Icon name="cube" size={18} />
-                <span className="mono-label">HOVER TO TILT / CLICK TO OPEN</span>
+                <span className="mono-label">悬停倾斜 / 点击打开</span>
               </div>
             </Reveal>
           </div>
@@ -77,8 +77,8 @@ export default function Projects() {
         <div className="container">
           <div className="filter-bar">
             <div className="filter-bar__left">
-              <span className="mono-label">FILTER BY DISCIPLINE</span>
-              <div className="filter-chips" role="group" aria-label="Filter projects by category">
+              <span className="mono-label">按领域筛选</span>
+              <div className="filter-chips" role="group" aria-label="按类别筛选作品">
                 {categories.map((category) => (
                   <button
                     key={category}
@@ -88,14 +88,14 @@ export default function Projects() {
                     aria-pressed={filter === category}
                     data-cursor="link"
                   >
-                    {category}
+                    {category === 'All' ? '全部' : category}
                     <span>{category === 'All' ? profile.projects.length : profile.projects.filter((project) => project.category === category).length}</span>
                   </button>
                 ))}
               </div>
             </div>
             <div className="filter-bar__right mono-label">
-              <span>SHOWING {String(filtered.length).padStart(2, '0')} / {String(profile.projects.length).padStart(2, '0')}</span>
+              <span>显示 {String(filtered.length).padStart(2, '0')} / {String(profile.projects.length).padStart(2, '0')}</span>
               <span className="filter-bar__line" />
             </div>
           </div>
@@ -123,9 +123,9 @@ export default function Projects() {
         <div className="container">
           <SectionHeader
             index="03"
-            eyebrow="METHOD / SIGNAL TO SHIP"
-            title="A process built for ambiguity."
-            copy="Ambition needs a container. This is the four-stage operating rhythm I bring to complex creative projects."
+            eyebrow="方法 / 从信号到上线"
+            title="为模糊而生的流程。"
+            copy="野心需要一个容器。这是我带给复杂创意项目的四阶段工作节奏。"
           />
           <div className="process-grid">
             {processSteps.map((step, index) => (
@@ -133,7 +133,7 @@ export default function Projects() {
                 <div className="process-card__top">
                   <span className="process-card__index">{step.index}</span>
                   <span className="process-card__line" />
-                  <span className="mono-label">PHASE</span>
+                  <span className="mono-label">阶段</span>
                 </div>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
@@ -148,18 +148,18 @@ export default function Projects() {
           <div className="section-topline">
             <SectionHeader
               index="04"
-              eyebrow="COMPLETE INDEX"
-              title="Every file in the drawer."
-              copy="A compact index of the archive, including self-initiated research and projects that are not ready for the public eye."
+              eyebrow="完整索引"
+              title="抽屉里的每一份档案。"
+              copy="一份紧凑的档案索引，包含自主研究和尚未准备好公开的项目。"
             />
           </div>
           <div className="archive-table">
             <div className="archive-table__head mono-label">
-              <span>ID</span>
-              <span>PROJECT</span>
-              <span>DISCIPLINE</span>
-              <span>YEAR</span>
-              <span>STATUS</span>
+              <span>编号</span>
+              <span>项目</span>
+              <span>领域</span>
+              <span>年份</span>
+              <span>状态</span>
             </div>
             {profile.projects.map((project, index) => (
               <button
@@ -168,7 +168,7 @@ export default function Projects() {
                 className="archive-table__row"
                 onClick={() => setActiveProject(project)}
                 data-cursor="link"
-                data-cursor-label="OPEN"
+                data-cursor-label="打开"
               >
                 <span className="mono-label">0{index + 1}</span>
                 <span className="archive-table__project">
@@ -177,7 +177,7 @@ export default function Projects() {
                 </span>
                 <span>{project.category}</span>
                 <span>{project.year}</span>
-                <span className="archive-table__status"><i /> RELEASED</span>
+                <span className="archive-table__status"><i /> 已发布</span>
               </button>
             ))}
           </div>
@@ -187,10 +187,10 @@ export default function Projects() {
       <section className="section projects-cta">
         <div className="container">
           <Reveal className="projects-cta__panel glass-panel">
-            <span className="mono-label">NEXT CASE FILE / YOURS</span>
-            <h2>The archive has room for one more signal.</h2>
-            <p>Bring me the project that feels a little too ambitious for its timeline. That is usually where the interesting work lives.</p>
-            <NeonButton to="/contact" icon="send">Begin a brief</NeonButton>
+            <span className="mono-label">下一个案例 / 属于你</span>
+            <h2>档案库里，还留着一个信号的位置。</h2>
+            <p>把那个相对于时间线显得有点过于有野心的项目带给我。有趣的作品通常就住在那里。</p>
+            <NeonButton to="/contact" icon="send">开始一份需求</NeonButton>
           </Reveal>
         </div>
       </section>

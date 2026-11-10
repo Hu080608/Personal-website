@@ -20,7 +20,7 @@ import { Reveal } from '../components/common/Reveal'
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Home() {
-  useDocumentTitle('Home')
+  useDocumentTitle('首页')
   const rootRef = useRef(null)
   const [activeProject, setActiveProject] = useState(null)
   const featured = profile.projects.filter((project) => project.featured).slice(0, 3)
@@ -65,7 +65,7 @@ export default function Home() {
             <span className="status-dot" />
             <ScrambleText text={profile.hero.overline} trigger="mount" speed={24} />
             <span className="hero__overline-line" />
-            <span className="mono-label">EST. {profile.meta.copyrightStart}</span>
+            <span className="mono-label">始于 {profile.meta.copyrightStart}</span>
           </div>
 
           <h1 className="hero__title">
@@ -79,7 +79,7 @@ export default function Home() {
           </h1>
 
           <div className="hero__role-row">
-            <span className="hero__role-prefix mono-label">OPERATOR PROFILE //</span>
+            <span className="hero__role-prefix mono-label">操作者档案 //</span>
             <Typewriter words={profile.hero.roles} className="hero__role" />
           </div>
 
@@ -107,16 +107,16 @@ export default function Home() {
         <div className="hero__rail hero__rail--left" aria-hidden="true">
           <span>{profile.meta.coordinates}</span>
           <span className="hero__rail-line" />
-          <span>SIGNAL / 98.4</span>
+          <span>信号强度 / 98.4</span>
         </div>
         <div className="hero__rail hero__rail--right" aria-hidden="true">
-          <span>SCROLL TO DECODE</span>
+          <span>向下滚动解码</span>
           <span className="hero__rail-line" />
           <span>{profile.meta.initials.split('').join(' / ')} — 4.2</span>
         </div>
 
-        <a href="#signal" className="scroll-cue" aria-label="Scroll to content" data-cursor="link">
-          <span className="scroll-cue__text">SCROLL</span>
+        <a href="#signal" className="scroll-cue" aria-label="向下滚动到内容" data-cursor="link">
+          <span className="scroll-cue__text">向下</span>
           <span className="scroll-cue__track"><span className="scroll-cue__thumb" /></span>
         </a>
 
@@ -141,11 +141,11 @@ export default function Home() {
             <Reveal className="signal-grid__intro">
               <div className="section-header__eyebrow">
                 <span className="section-header__index">01</span>
-                <span className="mono-label">ORIGIN SIGNAL</span>
+                <span className="mono-label">起源信号</span>
                 <span className="section-header__line" />
               </div>
               <h2 className="display-heading">
-                Between <span className="text-gradient">impossible</span> art direction and production-ready code.
+                在<span className="text-gradient">不可能</span>的艺术方向与可上线的代码之间。
               </h2>
             </Reveal>
 
@@ -153,13 +153,13 @@ export default function Home() {
               <p className="lead-copy">{profile.about.lead}</p>
               <p>{profile.about.paragraphs[0]}</p>
               <Link to="/about" className="text-link" data-cursor="link">
-                Read the full dossier
+                阅读完整档案
                 <Icon name="arrow" size={15} />
               </Link>
             </Reveal>
 
             <Reveal className="signal-grid__panel glass-panel" delay={180}>
-              <span className="panel-collar">LIVE STATUS</span>
+              <span className="panel-collar">实时状态</span>
               {profile.about.status.map((item) => (
                 <div className="status-row" key={item.label}>
                   <span className="mono-label">{item.label}</span>
@@ -181,13 +181,13 @@ export default function Home() {
           <div className="section-topline">
             <SectionHeader
               index="02"
-              eyebrow="SELECTED TRANSMISSIONS"
-              title="Work that leaves a trace."
-              copy="A selection of identities, interfaces and systems built for teams operating at the edge of what the browser can do."
+              eyebrow="精选传输"
+              title="作品会留下痕迹。"
+              copy="为那些站在浏览器能力边缘的团队，构建品牌识别、界面与系统。"
             />
             <Reveal delay={160}>
               <NeonButton to="/projects" variant="ghost" icon="arrow">
-                All case files
+                全部案例
               </NeonButton>
             </Reveal>
           </div>
@@ -206,9 +206,9 @@ export default function Home() {
         <div className="container">
           <SectionHeader
             index="03"
-            eyebrow="CAPABILITY MATRIX"
-            title="A full-stack creative practice."
-            copy="I move between the whiteboard, the design file and the render loop. The through-line is an obsession with how things feel when they respond."
+            eyebrow="能力矩阵"
+            title="完整的创意实践。"
+            copy="我在白板、设计文件和渲染循环之间来回移动。贯穿始终的，是对“回应时的手感”近乎偏执的关注。"
           />
 
           <div className="capability-grid">
@@ -230,12 +230,12 @@ export default function Home() {
 
           <div className="capability-footer">
             <Reveal>
-              <p className="mono-label">CURRENTLY EXPLORING</p>
-              <p className="capability-footer__marquee">SPATIAL UI · GENERATIVE IDENTITY · REALTIME DATA · WEBGPU · AMBIENT COMPUTING</p>
+              <p className="mono-label">正在探索</p>
+              <p className="capability-footer__marquee">空间界面 · 生成式品牌 · 实时数据 · WEBGPU · 环境计算</p>
             </Reveal>
             <Reveal delay={100}>
               <Link to="/lab" className="text-link" data-cursor="link">
-                Enter the lab
+                进入实验室
                 <Icon name="arrow" size={15} />
               </Link>
             </Reveal>
@@ -247,11 +247,11 @@ export default function Home() {
         <div className="container manifesto-grid">
           <Reveal className="manifesto-grid__marker">
             <span className="manifesto-index">04</span>
-            <span className="mono-label">DESIGN MANIFESTO</span>
+            <span className="mono-label">设计宣言</span>
           </Reveal>
           <Reveal className="manifesto-grid__quote" delay={90}>
             <p data-parallax="-32">
-              The screen is not the destination. It is the <span className="text-gradient">threshold</span>.
+              屏幕不是终点，而是通往未知的<span className="text-gradient">入口</span>。
             </p>
             <div className="manifesto-grid__foot">
               <span className="mono-label">{profile.meta.name} / {new Date().getFullYear()}</span>
@@ -275,13 +275,13 @@ export default function Home() {
           <div className="section-topline">
             <SectionHeader
               index="05"
-              eyebrow="FIELD NOTES"
-              title="Signals from the work."
-              copy="Essays on interfaces, motion, performance and the strange craft of building believable digital worlds."
+              eyebrow="现场笔记"
+              title="来自工作的信号。"
+              copy="关于界面、动效、性能，以及构建可信数字世界这门奇怪手艺的随笔。"
             />
             <Reveal delay={120}>
               <NeonButton to="/blog" variant="ghost" icon="arrow">
-                Read the log
+                阅读日志
               </NeonButton>
             </Reveal>
           </div>
@@ -289,7 +289,7 @@ export default function Home() {
           <div className="home-posts">
             {latestPosts.map((post, index) => (
               <Reveal key={post.slug} delay={index * 100}>
-                <Link to={`/blog/${post.slug}`} className="home-post" data-cursor="link" data-cursor-label="READ">
+                <Link to={`/blog/${post.slug}`} className="home-post" data-cursor="link" data-cursor-label="阅读">
                   <div className="home-post__meta">
                     <span className="mono-label">{post.displayDate}</span>
                     <span className="mono-label">{post.readTime}</span>
@@ -311,11 +311,11 @@ export default function Home() {
         <div className="container">
           <Reveal className="home-cta__panel glass-panel">
             <div className="home-cta__orb" aria-hidden="true" />
-            <span className="mono-label">CHANNEL OPEN / RESPONSE &lt; 48H</span>
-            <h2>Have a signal worth amplifying?</h2>
+            <span className="mono-label">频道开放 / 48 小时内回复</span>
+            <h2>有值得放大的信号吗？</h2>
             <p>{profile.contact.lead}</p>
             <div className="home-cta__actions">
-              <NeonButton to="/contact" icon="send">Open a channel</NeonButton>
+              <NeonButton to="/contact" icon="send">开启频道</NeonButton>
               <a href={`mailto:${profile.meta.email}`} className="text-link" data-cursor="link">
                 {profile.meta.email}
                 <Icon name="arrow" size={15} />

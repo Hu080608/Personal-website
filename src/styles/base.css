@@ -26,9 +26,9 @@
   --white: #ffffff;
   --danger: #ff6b8a;
 
-  --font-display: 'Orbitron', 'Segoe UI', sans-serif;
-  --font-body: 'Space Grotesk', 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Cascadia Code', monospace;
+  --font-display: 'Orbitron', 'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-body: 'Space Grotesk', 'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Noto Sans SC', 'Microsoft YaHei', monospace;
 
   --container: 1360px;
   --gutter: clamp(20px, 4vw, 60px);
@@ -110,8 +110,10 @@ h6 {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.02em;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 
 p {
@@ -498,4 +500,44 @@ ol {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CHINESE TYPOGRAPHY OVERRIDES
+   Chinese glyphs occupy a full em box, so display type needs more
+   vertical breathing room than the Latin-only sci-fi lockups.
+   ───────────────────────────────────────────────────────────── */
+.page-title {
+  font-size: clamp(2.4rem, 5.2vw, 5.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.display-heading,
+.section-header__title,
+.home-cta__panel h2,
+.projects-cta__panel h2,
+.blog-cta__panel h2,
+.post-cta__panel h2,
+.contact-last h2,
+.article-hero h1,
+.next-post h2,
+.featured-post h2,
+.not-found__content h1,
+.manifesto-grid__quote p,
+.home-post h3,
+.project-card__title,
+.principle-card h3,
+.process-card h3,
+.lab-note h3,
+.topic-card h3,
+.availability-item h3,
+.article-author h3,
+.article-body h2,
+.article-body blockquote p {
+  line-height: 1.14;
+}
+
+.section-header__title {
+  letter-spacing: -0.02em;
 }
