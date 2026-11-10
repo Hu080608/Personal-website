@@ -1,0 +1,149 @@
+/* ══════════════════════════════════════════════════════════════
+   KEYFRAMES — every loop is finite or cleanly interrupted; all
+   long-running motion is disabled by the reduced-motion switch.
+   ══════════════════════════════════════════════════════════════ */
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 4px rgba(63, 242, 176, 0.08), 0 0 14px rgba(63, 242, 176, 0.7); }
+  50% { opacity: 0.55; box-shadow: 0 0 0 7px rgba(63, 242, 176, 0), 0 0 8px rgba(63, 242, 176, 0.4); }
+}
+
+@keyframes grid-drift {
+  from { transform: translate3d(0, 0, 0) rotate(0deg); }
+  to { transform: translate3d(64px, 64px, 0) rotate(0deg); }
+}
+
+@keyframes scanline-move {
+  from { transform: translateY(0); }
+  to { transform: translateY(4px); }
+}
+
+@keyframes orb-float-a {
+  from { transform: translate3d(-3%, -4%, 0) scale(0.96); }
+  to { transform: translate3d(5%, 7%, 0) scale(1.08); }
+}
+
+@keyframes orb-float-b {
+  from { transform: translate3d(3%, -2%, 0) scale(1); }
+  to { transform: translate3d(-5%, 6%, 0) scale(1.1); }
+}
+
+@keyframes orb-float-c {
+  from { transform: translate3d(-2%, 2%, 0) scale(0.9); }
+  to { transform: translate3d(6%, -6%, 0) scale(1.05); }
+}
+
+@keyframes loader-line {
+  from { transform: scaleY(0.5); opacity: 0.5; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes header-scan {
+  0% { transform: translateX(-100%); }
+  55%, 100% { transform: translateX(100%); }
+}
+
+@keyframes glitch-shift {
+  0% { transform: translate(-2px, 1px); }
+  25% { transform: translate(2px, -1px); }
+  50% { transform: translate(-1px, -1px); }
+  75% { transform: translate(1px, 1px); }
+  100% { transform: translate(-2px, 0); }
+}
+
+@keyframes glitch-shift-alt {
+  0% { transform: translate(2px, -1px); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(1px, 1px); }
+  75% { transform: translate(-1px, -1px); }
+  100% { transform: translate(2px, 0); }
+}
+
+@keyframes caret-blink {
+  0%, 45% { opacity: 1; }
+  46%, 100% { opacity: 0; }
+}
+
+@keyframes card-scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(320%); }
+}
+
+@keyframes modal-orbit {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes radar-draw {
+  from { opacity: 0; transform: scale(0.72); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes node-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+@keyframes telemetry-scan {
+  from { transform: translateY(-110%); }
+  to { transform: translateY(800%); }
+}
+
+@keyframes state-blink {
+  0%, 45% { opacity: 1; }
+  46%, 100% { opacity: 0.35; }
+}
+
+@keyframes aurora-spin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+
+@keyframes scroll-thumb {
+  0% { transform: translateY(0); }
+  55% { transform: translateY(80px); }
+  100% { transform: translateY(80px); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes wave-pulse {
+  from { transform: scaleY(0.55); opacity: 0.35; }
+  to { transform: scaleY(1); opacity: 0.8; }
+}
+
+@keyframes portrait-scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(420%); }
+}
+
+@keyframes rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-backdrop__grid,
+  .ambient-backdrop__scanlines,
+  .ambient-backdrop__orb,
+  .hero__aurora,
+  .hero__grid,
+  .signal-wave span,
+  .project-card__scan,
+  .project-modal__visual-ring,
+  .featured-post__orbit,
+  .featured-post__core,
+  .not-found__wave span,
+  .telemetry__scanline,
+  .shader-lab__reticle,
+  .portrait-frame__scan,
+  .marquee-strip__track {
+    animation: none !important;
+  }
+}
+
+@keyframes fallback-spin {
+  to { transform: rotate(360deg); }
+}
